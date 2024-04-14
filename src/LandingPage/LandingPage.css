@@ -1,0 +1,13 @@
+main {
+    height: 100vh;
+    background-image: url(../puppy-wide-blue-background.jpg);
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+  }
+  
+  h1{
+    color: white;
+    margin-left: 100px;
+    margin-top: 200px;
+  }
