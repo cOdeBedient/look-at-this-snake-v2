@@ -10,18 +10,18 @@ const [snakes, setSnakes] = useState([])
  function fetchZones() {
   return fetch('http://localhost:3000/api/v1/noSnakeZones/')
     .then(res => res.json())
-    .then(zones => setZones(zones))
  }
 
  function fetchSnakes() {
   return fetch('http://localhost:3000/api/v1/snakes/')
     .then(res => res.json())
-    .then(snakes => setSnakes(snakes))
  }
 
 useEffect(() => {
   fetchZones()
+  .then(zones => setZones(zones.zones))
   fetchSnakes()
+  .then(snakes => setSnakes(snakes.snakes))
 }, [])
 
 
@@ -33,6 +33,7 @@ useEffect(() => {
   return (
     <main>
       <h1>No Snake Zones</h1>
+      {snakes.length > 0 && <img src={snakes[0].image} />}
     </main>
   );
 }
