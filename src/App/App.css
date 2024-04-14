@@ -1,6 +1,6 @@
 main {
   height: 100vh;
-  background-image: url(./puppy-wide-blue-background.jpg);
+  background-image: url(../puppy-wide-blue-background.jpg);
   background-size: cover;
   position: absolute;
   width: 100%;
