@@ -40,23 +40,24 @@ export default function({ currentSnakes }) {
     }, [panicMode])
 
     function handleKeyPress(event) {
-        if (event.key === ' ') {
+        if (event.key === 'b') {
             setPanicMode(true)
       }
     }
 
     function handleKeyUp(event) {
-        if (event.key === ' ') {
+        if (event.key === 'b') {
             setPanicMode(false)
       }
     }
 
-    function advanceSnake() {
+    function advanceSnake(event) {
         if(snakeCounter < currentSnakes.length - 1) {
             setSnakeCounter(prev => prev + 1)
         } else {
             setFinished(true)
         }
+
     }
 
 
@@ -72,7 +73,7 @@ export default function({ currentSnakes }) {
                         :
                         displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
                     }
-                    <button onClick={advanceSnake}>I'm ready to see the next snake</button>
+                    <button onClick={event => advanceSnake(event)}>I'm ready to see the next snake</button>
                 </section>
             }
         </>
