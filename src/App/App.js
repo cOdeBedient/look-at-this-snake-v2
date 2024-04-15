@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
+const [currentSnakes, setCurrentSnakes] = useState([])
 
 
 
@@ -19,9 +20,8 @@ useEffect(() => {
     const preppedSnakes = snakes.snakes.map((snake) => {
       return {
         ...snake,
-        isCurrent: false,
-        isDisplayed: false,
-        isFavorite: false
+        isFavorite: false,
+        isDisplayed: false
       }
     })
 
@@ -33,50 +33,35 @@ useEffect(() => {
 function filterSnakes(level) {
   let snakeSet;
   if (level === '1') {
-    snakeSet = snakes.map((snake) => {
-      if(!snake.isVenemous && !snake.isAggressive) {
-        snake.isCurrent = true
-      }
-
-      return snake
+    snakeSet = snakes.filter((snake) => {
+      return !snake.isVenemous && !snake.isAggressive
     })
   } else if (level === '2') {
-    snakeSet = snakes.map((snake) => {
-      if(!snake.isVenemous && snake.isAggressive) {
-        snake.isCurrent = true
-      }
-
-      return snake
+    snakeSet = snakes.filter((snake) => {
+      return !snake.isVenemous && snake.isAggressive
     })
   } else if (level === '3') {
-    snakeSet = snakes.map((snake) => {
-      if(snake.isVenemous && !snake.isAggressive) {
-        snake.isCurrent = true
-      }
-
-      return snake
+    snakeSet = snakes.filter((snake) => {
+      return snake.isVenemous && !snake.isAggressive
     })
   } else if (level === '4') {
-    snakeSet = snakes.map((snake) => {
-      if(snake.isVenemous && snake.isAggressive) {
-        snake.isCurrent = true
-      }
-
-      return snake
+    snakeSet = snakes.filter((snake) => {
+      return snake.isVenemous && snake.isAggressive
     })
   }
 
-  setSnakes(snakeSet)
+  snakeSet[0].isDisplayed = true
+  setCurrentSnakes(snakeSet)
 }
 
-console.log('filteredSnakes', snakes)
+console.log('filteredSnakes', currentSnakes)
 
 
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
-        <Route path='/game' element={<Game />} />
+        <Route path='/game' element={<Game currentSnakes={ currentSnakes }/>} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

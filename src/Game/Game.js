@@ -1,9 +1,19 @@
 import './Game.css'
+import { useState, useEffect } from 'react'
 
-export default function Game() {
+export default function Game({ currentSnakes }) {
+    const [ displayedSnake, setDisplayedSnake ] = useState({})
+
+    useEffect(() => {
+        if(currentSnakes[0]) {
+            setDisplayedSnake(currentSnakes.find(snake => snake.isDisplayed))
+        }
+    })
+
     return (
         <>
-            <h1 className="game-title">Game Board</h1>
+            <h1 className="game-title">Remember to Breathe</h1>
+            { displayedSnake && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} /> }
         </>
     )
 }
