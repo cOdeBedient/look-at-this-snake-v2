@@ -2,6 +2,9 @@ import './App.css';
 import { useState, useEffect } from 'react'
 import { getData } from '../apiCalls'
 import LandingPage from '../LandingPage/LandingPage'
+import Error from '../Error/Error'
+import Game from '../Game/Game'
+import { Route, Routes } from 'react-router-dom'
 
 
 function App() {
@@ -27,12 +30,22 @@ useEffect(() => {
   })
 }, [])
 
+function filterSnakes(level) {
+  console.log('level in filter', level)
+}
+
 
 
 
   return (
     <>
-      <LandingPage />
+      <Routes>
+        <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
+        <Route path='/game' element={<Game />} />
+        <Route path='*' element={<Error />} />
+        <Route path='/error' element={<Error />} />
+      </Routes>
+      
     </>
   );
 }
