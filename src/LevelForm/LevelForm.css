@@ -1,3 +1,7 @@
-form {
+section {
     margin-left: 100px;
+}
+
+label {
+    color: white;
 }

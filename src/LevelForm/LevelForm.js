@@ -2,19 +2,19 @@ import './LevelForm.css'
 
 export default function LevelForm() {
     return (
-        <form>
-            <label>Level 1
-                <input type="radio"></input>
+        <section>
+            <label>
+                <input name="level" type="radio"></input>Level 1 | 
             </label>
-            <label>Level 2
-                <input type="radio"></input>
+            <label>
+                <input name="level" type="radio"></input>Level 2 | 
             </label>
-            <label>Level 3
-                <input type="radio"></input>
+            <label>
+                <input name="level" type="radio"></input>Level 3 | 
             </label>
-            <label>Level 4
-                <input type="radio"></input>
+            <label>
+                <input name="level" type="radio"></input>Level 4 | 
             </label>
-        </form>
+        </section>
     )
 }
