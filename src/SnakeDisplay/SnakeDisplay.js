@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import './SnakeDisplay.css'
+import Decompression from '../Decompression/Decompression'
 
 export default function({ currentSnakes }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Look at this Snake')
     const [ snakeCounter, setSnakeCounter ] = useState(0)
+    const [ finished, setFinished ] = useState(false)
 
     useEffect(() => {
         if(currentSnakes.length > 0) {
@@ -33,7 +35,7 @@ export default function({ currentSnakes }) {
             setImageTitle('Remember to Breathe') 
         } else {
             console.log('actually here')
-            setImageTitle('Look at this Snake')
+            setImageTitle('Look at this Snake:')
         }
     }, [panicMode])
 
@@ -50,19 +52,29 @@ export default function({ currentSnakes }) {
     }
 
     function advanceSnake() {
-        setSnakeCounter(prev => prev + 1)
+        if(snakeCounter < currentSnakes.length - 1) {
+            setSnakeCounter(prev => prev + 1)
+        } else {
+            setFinished(true)
+        }
     }
 
 
     return (
         <>
-            <h2>{imageTitle}</h2>
-            {panicMode ?
-                <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
+            {finished ?
+                <Decompression />
                 :
-                displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                <section className="snake-display">
+                    <p>{imageTitle}</p>
+                    {panicMode ?
+                        <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
+                        :
+                        displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                    }
+                    <button onClick={advanceSnake}>I'm ready to see the next snake</button>
+                </section>
             }
-            <button onClick={advanceSnake}>I'm ready to see the next snake</button>
         </>
     )
 }
