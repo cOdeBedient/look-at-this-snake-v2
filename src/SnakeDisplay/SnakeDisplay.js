@@ -5,12 +5,13 @@ export default function({ currentSnakes }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Look at this Snake')
+    const [ snakeCounter, setSnakeCounter ] = useState(0)
 
     useEffect(() => {
         if(currentSnakes.length > 0) {
-            setDisplayedSnake(currentSnakes.find(snake => snake.isDisplayed))
+            setDisplayedSnake(currentSnakes[snakeCounter])
         }
-    }, [currentSnakes])
+    })
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress)
@@ -26,6 +27,16 @@ export default function({ currentSnakes }) {
         };
       }, [])
 
+    useEffect(() => {
+        if(panicMode) {
+            console.log('here')
+            setImageTitle('Remember to Breathe') 
+        } else {
+            console.log('actually here')
+            setImageTitle('Look at this Snake')
+        }
+    }, [panicMode])
+
     function handleKeyPress(event) {
         if (event.key === ' ') {
             setPanicMode(true)
@@ -38,15 +49,9 @@ export default function({ currentSnakes }) {
       }
     }
 
-    useEffect(() => {
-        if(panicMode) {
-            console.log('here')
-            setImageTitle('Remember to Breathe') 
-        } else {
-            console.log('actually here')
-            setImageTitle('Look at this Snake')
-        }
-    }, [panicMode])
+    function advanceSnake() {
+        setSnakeCounter(prev => prev + 1)
+    }
 
 
     return (
@@ -57,6 +62,7 @@ export default function({ currentSnakes }) {
                 :
                 displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
             }
+            <button onClick={advanceSnake}>I'm ready to see the next snake</button>
         </>
     )
 }
