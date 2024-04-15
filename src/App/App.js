@@ -31,10 +31,45 @@ useEffect(() => {
 }, [])
 
 function filterSnakes(level) {
-  console.log('level in filter', level)
+  let snakeSet;
+  if (level === '1') {
+    snakeSet = snakes.map((snake) => {
+      if(!snake.isVenemous && !snake.isAggressive) {
+        snake.isCurrent = true
+      }
+
+      return snake
+    })
+  } else if (level === '2') {
+    snakeSet = snakes.map((snake) => {
+      if(!snake.isVenemous && snake.isAggressive) {
+        snake.isCurrent = true
+      }
+
+      return snake
+    })
+  } else if (level === '3') {
+    snakeSet = snakes.map((snake) => {
+      if(snake.isVenemous && !snake.isAggressive) {
+        snake.isCurrent = true
+      }
+
+      return snake
+    })
+  } else if (level === '4') {
+    snakeSet = snakes.map((snake) => {
+      if(snake.isVenemous && snake.isAggressive) {
+        snake.isCurrent = true
+      }
+
+      return snake
+    })
+  }
+
+  setSnakes(snakeSet)
 }
 
-
+console.log('filteredSnakes', snakes)
 
 
   return (
