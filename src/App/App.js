@@ -1,6 +1,10 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import { getData } from '../apiCalls'
+import LandingPage from '../LandingPage/LandingPage'
+import Error from '../Error/Error'
+import Game from '../Game/Game'
+import { Route, Routes } from 'react-router-dom'
 
 
 function App() {
@@ -12,21 +16,37 @@ const [snakes, setSnakes] = useState([])
 useEffect(() => {
   getData()
   .then(([zones, snakes]) => {
-    console.log("snakes", snakes)
-    console.log("zones", zones)
+    const preppedSnakes = snakes.snakes.map((snake) => {
+      return {
+        ...snake,
+        isCurrent: false,
+        isDisplayed: false,
+        isFavorite: false
+      }
+    })
+
     setZones(zones.zones)
-    setSnakes(snakes.snakes)
+    setSnakes(preppedSnakes)
   })
 }, [])
+
+function filterSnakes(level) {
+  console.log('level in filter', level)
+}
 
 
 
 
   return (
-    <main>
-      <h1>No Snake Zones</h1>
-      {snakes.length > 0 && <img src={snakes[0].image} />}
-    </main>
+    <>
+      <Routes>
+        <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
+        <Route path='/game' element={<Game />} />
+        <Route path='*' element={<Error />} />
+        <Route path='/error' element={<Error />} />
+      </Routes>
+      
+    </>
   );
 }
 
