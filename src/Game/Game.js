@@ -13,7 +13,7 @@ export default function Game({ currentSnakes }) {
     return (
         <>
             <h1 className="game-title">Remember to Breathe</h1>
-            { displayedSnake && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} /> }
+            { displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} /> }
         </>
     )
 }
