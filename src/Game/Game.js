@@ -1,9 +1,16 @@
 import './Game.css'
+import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
+import { useState, useEffect } from 'react'
 
-export default function Game() {
+
+export default function Game({ currentSnakes }) {
+
     return (
-        <>
-            <h1 className="game-title">Game Board</h1>
-        </>
+        <main>
+            <div>
+                <SnakeDisplay currentSnakes={currentSnakes}/>
+                {/* <RatingBar /> */}
+            </div>
+        </main>
     )
 }

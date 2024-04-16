@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
+const [currentSnakes, setCurrentSnakes] = useState([])
 
 
 
@@ -19,9 +20,8 @@ useEffect(() => {
     const preppedSnakes = snakes.snakes.map((snake) => {
       return {
         ...snake,
-        isCurrent: false,
-        isDisplayed: false,
-        isFavorite: false
+        isFavorite: false,
+        isDisplayed: false
       }
     })
 
@@ -31,17 +31,37 @@ useEffect(() => {
 }, [])
 
 function filterSnakes(level) {
-  console.log('level in filter', level)
+  let snakeSet;
+  if (level === '1') {
+    snakeSet = snakes.filter((snake) => {
+      return !snake.isVenemous && !snake.isAggressive
+    })
+  } else if (level === '2') {
+    snakeSet = snakes.filter((snake) => {
+      return !snake.isVenemous && snake.isAggressive
+    })
+  } else if (level === '3') {
+    snakeSet = snakes.filter((snake) => {
+      return snake.isVenemous && !snake.isAggressive
+    })
+  } else if (level === '4') {
+    snakeSet = snakes.filter((snake) => {
+      return snake.isVenemous && snake.isAggressive
+    })
+  }
+
+  snakeSet[0].isDisplayed = true
+  setCurrentSnakes(snakeSet)
 }
 
-
+console.log('filteredSnakes', currentSnakes)
 
 
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
-        <Route path='/game' element={<Game />} />
+        <Route path='/game' element={<Game currentSnakes={ currentSnakes }/>} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

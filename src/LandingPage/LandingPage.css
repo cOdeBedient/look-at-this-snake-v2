@@ -1,6 +1,6 @@
-main {
+.landing {
     height: 100vh;
-    background-image: url(../puppy-wide-blue-background.jpg);
+    background-image: url('../../public/assets/puppy-wide-blue-background.jpg');
     background-size: cover;
     position: absolute;
     width: 100%;
@@ -12,6 +12,14 @@ main {
     color: white;
     margin-left: 100px;
     margin-top: 200px;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    font-style: italic;
+    margin-left: 100px;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 
   a {
@@ -19,11 +27,9 @@ main {
   }
 
   p {
-
     color: black;
     background-color: white;
     width: fit-content;
-    margin-left: 100px;
     margin-top: 30px;
     padding: 4px 8px 4px 8px;
     border-radius: 4px;

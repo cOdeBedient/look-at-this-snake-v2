@@ -1,0 +1,23 @@
+h2 {
+    margin-top: 70px;
+}
+
+img {
+    height: 400px;
+    width: 600px;
+    object-fit: cover;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: light grey;
+}
+
+.snake-display {
+    display: flex;
+    flex-direction: column
+}
+
+button {
+    margin-top: 20px;
+    color: white;
+    background-color: black;
+}

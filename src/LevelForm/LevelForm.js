@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function LevelForm( { filterSnakes }) {
-    const [formSelector, setFormSelector] = useState('0')
+    const [formSelector, setFormSelector] = useState('1')
 
 
     function handleChange(event) {
@@ -13,8 +13,6 @@ export default function LevelForm( { filterSnakes }) {
     function handleClick() {
         filterSnakes(formSelector)
     }
-
-    console.log(formSelector)
 
     return (
         <section>

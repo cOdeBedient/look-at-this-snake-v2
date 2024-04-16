@@ -1,0 +1,7 @@
+.snake-box {
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    padding: 3px;
+    border: 2px solid grey;
+}

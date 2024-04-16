@@ -1,3 +1,11 @@
 .game-title {
     color: black;
 }
+
+main {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
