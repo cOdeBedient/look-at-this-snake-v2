@@ -1,9 +1,16 @@
+/* body {
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+} */
+
 .landing {
     height: 100vh;
     background-image: url('../../public/assets/puppy-wide-blue-background.jpg');
     background-size: cover;
     position: absolute;
-    width: 100%;
+    width: 100vw;
   }
   
   h1{
