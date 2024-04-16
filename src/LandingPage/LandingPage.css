@@ -12,6 +12,14 @@
     color: white;
     margin-left: 100px;
     margin-top: 200px;
+    margin-bottom: 5px;
+  }
+
+  h3 {
+    font-style: italic;
+    margin-left: 100px;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 
   a {
