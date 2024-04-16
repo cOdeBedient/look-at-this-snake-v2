@@ -5,14 +5,18 @@ import LandingPage from '../LandingPage/LandingPage'
 import Error from '../Error/Error'
 import Game from '../Game/Game'
 import { Route, Routes } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
 const [currentSnakes, setCurrentSnakes] = useState([])
+const navigate = useNavigate()
 
-
+function handleError(error) {
+  navigate('/error')
+}
 
 useEffect(() => {
   getData()
@@ -24,10 +28,11 @@ useEffect(() => {
         isDisplayed: false
       }
     })
-
+    
     setZones(zones.zones)
     setSnakes(preppedSnakes)
   })
+  .catch(err => handleError(err))
 }, [])
 
 function filterSnakes(level) {

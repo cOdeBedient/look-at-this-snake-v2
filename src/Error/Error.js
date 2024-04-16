@@ -150,9 +150,9 @@ export default function Error() {
 
     return (
         <div className="error">
-            <h2>ERROR</h2>
+            <h2>Sssssomething went wrong! Try again sssssssoon.</h2>
             <canvas width="400" height="400" id="game"></canvas>
-            <button onClick={runGame}>forget all this and just play snake</button>
+            <button onClick={runGame}>or just forget all this and play snake</button>
         </div>
     )
 }
