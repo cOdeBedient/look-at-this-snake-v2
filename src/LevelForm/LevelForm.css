@@ -2,7 +2,6 @@ section {
     margin-left: 100px;
 }
 
-label {
+.level-form {
     color: white;
-    margin-right: 1px;
 }

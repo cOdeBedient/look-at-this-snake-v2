@@ -5,7 +5,7 @@ export default function Counter({ currentSnakes, snakeCounter }) {
     const snakeBoxes = currentSnakes.reduce((acc, snake, index) => {
         if (index <= snakesLeft) {
             acc.push(
-            <div className='snake-box-container'>
+            <div className='snake-box-container' >
                 <div className='snake-box'></div>
             </div>)
         }

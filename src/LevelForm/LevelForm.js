@@ -15,7 +15,7 @@ export default function LevelForm( { filterSnakes }) {
     }
 
     return (
-        <section>
+        <section className="level-form">
             <label>
                 <input name="level" type="radio" id="1" onChange={event => handleChange(event)} checked={formSelector === "1" ? true : false}></input>Level 1 | 
             </label>

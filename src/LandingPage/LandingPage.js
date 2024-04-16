@@ -5,8 +5,8 @@ export default function LandingPage({ filterSnakes }) {
 
     return (
         <div className="landing">
-            <h1>Look at this Snake</h1>
-            <h3>An emotional coping tool designed by someone with no credentials</h3>
+            <h1>Look at this Snake Then Look at This Puppy</h1>
+            <h3>An phobic deprogramming tool designed by someone with no credentials</h3>
             <LevelForm filterSnakes={filterSnakes} />
         </div>
     )
