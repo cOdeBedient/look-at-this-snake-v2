@@ -67,14 +67,16 @@ export default function({ currentSnakes }) {
                 <Decompression />
                 :
                 <section className="snake-display">
-                    <p>{imageTitle}</p>
-                    {panicMode ?
-                        <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
-                        :
-                        displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
-                    }
-                    <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
-                    <button onClick={event => advanceSnake(event)}>I'm ready to see the next snake</button>
+                    <p className="snake-title">{imageTitle}</p>
+                    <div className="snake-photos-container">
+                        <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
+                        {panicMode ?
+                            <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
+                            :
+                            displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                        }
+                    </div>
+                    <button onClick={event => advanceSnake(event)}>I'm ready to see the next snake</button> 
                 </section>
             }
         </>

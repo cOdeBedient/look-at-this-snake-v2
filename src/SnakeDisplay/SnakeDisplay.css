@@ -13,11 +13,20 @@ img {
 
 .snake-display {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+}
+
+.snake-photos-container {
+    display: flex;
 }
 
 button {
-    margin-top: 20px;
+    margin-top: 15px;
     color: white;
     background-color: black;
+}
+
+.snake-title {
+    text-align: center;
+    width: 100%;
 }
