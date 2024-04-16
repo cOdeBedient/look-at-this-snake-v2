@@ -17,44 +17,53 @@ export default function({ currentSnakes }) {
         }
     })
 
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress)
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress);
-        };
-      }, [])
+    // useEffect(() => {
+    //     document.addEventListener('keydown', handleKeyPress)
+    //     return () => {
+    //         document.removeEventListener('keydown', handleKeyPress);
+    //     };
+    //   }, [])
 
-    useEffect(() => {
-        document.addEventListener('keyup', handleKeyUp)
-        return () => {
-            document.removeEventListener('keyup', handleKeyUp);
-        };
-      }, [])
+    // useEffect(() => {
+    //     document.addEventListener('keyup', handleKeyUp)
+    //     return () => {
+    //         document.removeEventListener('keyup', handleKeyUp);
+    //     };
+    //   }, [])
 
     useEffect(() => {
         if(panicMode) {
-            console.log('here')
             setImageTitle('Remember to Breathe') 
         } else {
-            console.log('actually here')
             setImageTitle('Look at this Snake:')
         }
     }, [panicMode])
 
-    function handleKeyPress(event) {
-        if (event.key === 'b') {
-            setPanicMode(true)
-      }
+    // function handleKeyPress(event) {
+    //     if (event.key === 'b') {
+    //         setPanicMode(true)
+    //   }
+    // }
+
+    // function handleKeyUp(event) {
+    //     if (event.key === 'b') {
+    //         setPanicMode(false)
+    //   }
+    // }
+
+    function flicker(ms) {
+        setTimeout(() => {setPanicMode(prev => !prev)}, ms)
     }
 
-    function handleKeyUp(event) {
-        if (event.key === 'b') {
-            setPanicMode(false)
-      }
+    function runTest() {
+        for(var i=100; i<3200; i+=100) {
+            flicker(i)
+        }
     }
 
     function advanceSnake(event) {
         if(snakeCounter < currentSnakes.length - 1) {
+            setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
         } else {
             setFinished(true)
@@ -76,9 +85,8 @@ export default function({ currentSnakes }) {
                             :
                             displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
                         }
-                        <EvaluationForm />
-                    </div>
-                    <button onClick={event => advanceSnake(event)}>I'm ready to see the next snake</button> 
+                        <EvaluationForm advanceSnake={advanceSnake} runTest={runTest}/>
+                    </div> 
                 </section>
             }
         </>
