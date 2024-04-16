@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './SnakeDisplay.css'
 import Decompression from '../Decompression/Decompression'
+import Counter from '../Counter/Counter'
 
 export default function({ currentSnakes }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
@@ -57,7 +58,6 @@ export default function({ currentSnakes }) {
         } else {
             setFinished(true)
         }
-
     }
 
 
@@ -73,6 +73,7 @@ export default function({ currentSnakes }) {
                         :
                         displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
                     }
+                    <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
                     <button onClick={event => advanceSnake(event)}>I'm ready to see the next snake</button>
                 </section>
             }
