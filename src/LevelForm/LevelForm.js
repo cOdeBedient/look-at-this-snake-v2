@@ -29,7 +29,7 @@ export default function LevelForm( { filterSnakes }) {
                 <input name="level" type="radio" id="4" onChange={event => handleChange(event)} checked={formSelector === "4" ? true : false}></input>Level 4 | 
             </label>
             <Link to='/game' onClick={handleClick}>
-                <p>breathe. . . then click to begin</p>
+                <p>breathe. . . then click this button to begin</p>
             </Link>
         </section>
     )
