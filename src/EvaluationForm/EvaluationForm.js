@@ -1,7 +1,7 @@
 import "./EvaluationForm.css"
 import { useState } from 'react'
 
-export default function EvaluationForm({ advanceSnake, runTest }) {
+export default function EvaluationForm({ advanceSnake, runTest, snakeHidden }) {
     const [ evalFormData, setEvalFormData] = useState({before: 0, after: 0})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
@@ -34,18 +34,23 @@ export default function EvaluationForm({ advanceSnake, runTest }) {
 
 
     return (
+        snakeHidden === '' &&
         <form className='evaluation-form'>
-            <label>Starting Anxitey Level (out of 10)
-                <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
-            </label>
-            <button onClick={event => handleRunTestClick(event)}>run test</button>
-            {testHasRun &&
+            {testHasRun ?
             <>
                 <label>Updated Anxitey Level (out of 10)
                     <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
                 </label>
                 <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
-            </>}
+             </>
+            :
+            <>
+                <label>Starting Anxitey Level (out of 10)
+                    <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
+                </label>
+                <button onClick={event => handleRunTestClick(event)}>run test</button>
+            </>
+        }
         </form>
     )
 }

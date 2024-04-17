@@ -7,7 +7,7 @@ import EvaluationForm from '../EvaluationForm/EvaluationForm'
 export default function({ currentSnakes }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
-    const [ imageTitle, setImageTitle ] = useState('Look at this Snake')
+    const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
     const [ snakeCounter, setSnakeCounter ] = useState(0)
     const [ finished, setFinished ] = useState(false)
     const [ snakesWithPics, setSnakesWithPics ] = useState([])
@@ -53,13 +53,13 @@ export default function({ currentSnakes }) {
     //     };
     //   }, [])
 
-    useEffect(() => {
-        if(panicMode) {
-            setImageTitle('Remember to Breathe') 
-        } else {
-            setImageTitle('Look at this Snake:')
-        }
-    }, [panicMode])
+    // useEffect(() => {
+    //     if(panicMode) {
+    //         setImageTitle('Remember to Breathe') 
+    //     } else {
+    //         setImageTitle('Look at this Snake:')
+    //     }
+    // }, [panicMode])
 
     // function handleKeyPress(event) {
     //     if (event.key === 'b') {
@@ -78,6 +78,8 @@ export default function({ currentSnakes }) {
     }
 
     function runTest() {
+        setImageTitle('processing...')
+        setTimeout(() => {setImageTitle('Look at this Snake: ')}, 3100)
         for(var i=100; i<3100; i+=100) {
             flicker(i)
         }
@@ -95,6 +97,7 @@ export default function({ currentSnakes }) {
     function clickBox() {
         setSnakeHidden('')
         setBoxHidden('hidden')
+        setImageTitle('Look at this Snake: ')
     }
 
     return (
@@ -103,7 +106,7 @@ export default function({ currentSnakes }) {
                 <Decompression />
                 :
                 <section className="snake-display">
-                    <p className="snake-title">Look at this snake: </p>
+                    <p className="snake-title">{imageTitle}</p>
                     <div className="snake-photos-container">
                         <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
                             {panicMode ?
@@ -115,7 +118,7 @@ export default function({ currentSnakes }) {
                                     <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
                                 </>
                             }
-                        <EvaluationForm advanceSnake={advanceSnake} runTest={runTest}/>
+                        <EvaluationForm snakeHidden={snakeHidden} advanceSnake={advanceSnake} runTest={runTest}/>
                     </div> 
                 </section>
             }

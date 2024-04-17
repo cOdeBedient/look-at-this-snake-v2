@@ -27,6 +27,7 @@ img {
 
 .snake-photos-container {
     display: flex;
+    width: 800px;
 }
 
 button {
