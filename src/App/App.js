@@ -13,6 +13,8 @@ const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
 const [currentSnakes, setCurrentSnakes] = useState([])
 const navigate = useNavigate()
+const [userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+const [currentLevel, setCurrentLevel] = useState('')
 
 function handleError(error) {
   navigate('/error')
@@ -41,18 +43,22 @@ function filterSnakes(level) {
     snakeSet = snakes.filter((snake) => {
       return !snake.isVenemous && !snake.isAggressive
     })
+    setCurrentLevel('Level1')
   } else if (level === '2') {
     snakeSet = snakes.filter((snake) => {
       return !snake.isVenemous && snake.isAggressive
     })
+    setCurrentLevel('Level2')
   } else if (level === '3') {
     snakeSet = snakes.filter((snake) => {
       return snake.isVenemous && !snake.isAggressive
     })
+    setCurrentLevel('Level3')
   } else if (level === '4') {
     snakeSet = snakes.filter((snake) => {
       return snake.isVenemous && snake.isAggressive
     })
+    setCurrentLevel('Level4')
   }
 
   snakeSet[0].isDisplayed = true
@@ -61,12 +67,21 @@ function filterSnakes(level) {
 
 console.log('filteredSnakes', currentSnakes)
 
+function updateUserData(snake, data) {
+  const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
+
+  const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
+
+  setUserData(updatedUser)
+}
+
+console.log('user data', userData)
 
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
-        <Route path='/game' element={<Game currentSnakes={ currentSnakes }/>} />
+        <Route path='/game' element={<Game currentSnakes={currentSnakes} updateUserData={updateUserData}/>} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

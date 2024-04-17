@@ -1,7 +1,7 @@
 import "./EvaluationForm.css"
 import { useState } from 'react'
 
-export default function EvaluationForm({ advanceSnake, runTest, snakeHidden }) {
+export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData }) {
     const [ evalFormData, setEvalFormData] = useState({before: 0, after: 0})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
@@ -23,6 +23,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden }) {
 
     function handleNextSnakeClick(event) {
         event.preventDefault()
+        updateUserData(displayedSnake, evalFormData)
         moveToNextSnake()
     }
 
@@ -31,7 +32,6 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden }) {
         setTestHasRun(false)
         setEvalFormData({before: 0, after: 0})
     }
-
 
     return (
         snakeHidden === '' &&

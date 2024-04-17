@@ -4,7 +4,7 @@ import Decompression from '../Decompression/Decompression'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 
-export default function({ currentSnakes }) {
+export default function({ currentSnakes, updateUserData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
@@ -118,7 +118,12 @@ export default function({ currentSnakes }) {
                                     <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
                                 </>
                             }
-                        <EvaluationForm snakeHidden={snakeHidden} advanceSnake={advanceSnake} runTest={runTest}/>
+                        <EvaluationForm
+                            snakeHidden={snakeHidden}
+                            advanceSnake={advanceSnake}
+                            runTest={runTest}
+                            displayedSnake={displayedSnake}
+                            updateUserData={updateUserData} />
                     </div> 
                 </section>
             }

@@ -3,12 +3,12 @@ import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
 import { useState, useEffect } from 'react'
 
 
-export default function Game({ currentSnakes }) {
+export default function Game({ currentSnakes, updateUserData }) {
 
     return (
         <main>
             <div>
-                <SnakeDisplay currentSnakes={currentSnakes}/>
+                <SnakeDisplay currentSnakes={currentSnakes} updateUserData={updateUserData}/>
                 {/* <RatingBar /> */}
             </div>
         </main>
