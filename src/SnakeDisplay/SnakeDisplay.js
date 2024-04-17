@@ -11,6 +11,10 @@ export default function({ currentSnakes }) {
     const [ snakeCounter, setSnakeCounter ] = useState(0)
     const [ finished, setFinished ] = useState(false)
     const [ snakesWithPics, setSnakesWithPics ] = useState([])
+    const [ puppy, setPuppy ] = useState('')
+    const [ boxHidden, setBoxHidden] = useState('')
+    const [ snakeHidden, setSnakeHidden] = useState('hidden')
+   
 
     useEffect(() => {
         const updatedPicSnakes = currentSnakes.map((snake) => {
@@ -21,12 +25,15 @@ export default function({ currentSnakes }) {
             return snake
        })
        
+       const puppyPic = new Image()
+       puppyPic.src = '/assets/cute-doodle.jpg'
+
+       setPuppy(puppyPic)
        setSnakesWithPics(updatedPicSnakes)
     }, [currentSnakes])
 
 
     useEffect(() => {
-        console.log("snakesWithPics line 28", snakesWithPics)
         if(snakesWithPics.length > 0) {
             setDisplayedSnake(snakesWithPics[snakeCounter])
         }
@@ -71,13 +78,12 @@ export default function({ currentSnakes }) {
     }
 
     function runTest() {
-        for(var i=100; i<3200; i+=100) {
+        for(var i=100; i<3100; i+=100) {
             flicker(i)
         }
     }
 
     function advanceSnake(event) {
-        console.log('here and snakes with pics is', snakesWithPics)
         if(snakeCounter < snakesWithPics.length - 1) {
             setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
@@ -86,20 +92,29 @@ export default function({ currentSnakes }) {
         }
     }
 
+    function clickBox() {
+        setSnakeHidden('')
+        setBoxHidden('hidden')
+    }
+
     return (
         <>
             {finished ?
                 <Decompression />
                 :
                 <section className="snake-display">
-                    <p className="snake-title">{imageTitle}</p>
+                    <p className="snake-title">Look at this snake: </p>
                     <div className="snake-photos-container">
                         <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
-                        {panicMode ?
-                            <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
-                            :
-                            displayedSnake.image && <img src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
-                        }
+                            {panicMode ?
+                                <img src={puppy.src} alt="cute puppy" />
+                                :
+                                displayedSnake.image &&
+                                <>
+                                    <div className={`${snakeHidden}`}><img src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} /></div>
+                                    <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
+                                </>
+                            }
                         <EvaluationForm advanceSnake={advanceSnake} runTest={runTest}/>
                     </div> 
                 </section>

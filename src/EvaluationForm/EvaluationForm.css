@@ -1,4 +1,10 @@
 .evaluation-form {
     display: flex;
     flex-direction: column;
+    margin-left: 15px;
+    width: 150px;
+}
+
+label {
+    margin-top: 60px;
 }

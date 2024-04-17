@@ -6,7 +6,7 @@ export default function Counter({ currentSnakes, snakeCounter }) {
         if (index <= snakesLeft) {
             acc.push(
             <div className='snake-box-container' >
-                <div className='snake-box'></div>
+                <p className="counter">{index + 1}</p>
             </div>)
         }
 

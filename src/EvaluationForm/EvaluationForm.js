@@ -18,7 +18,7 @@ export default function EvaluationForm({ advanceSnake, runTest }) {
         console.log('made it in here')
         event.preventDefault()
         runTest()
-        setTimeout(() => {setTestHasRun(true)}, 3000)
+        setTimeout(() => {setTestHasRun(true)}, 3200)
     }
 
     function handleNextSnakeClick(event) {
@@ -36,13 +36,13 @@ export default function EvaluationForm({ advanceSnake, runTest }) {
     return (
         <form className='evaluation-form'>
             <label>Starting Anxitey Level (out of 10)
-                <input type="number" name="before" value={evalFormData.before} onChange={event => handleChange(event)} />
+                <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
             </label>
             <button onClick={event => handleRunTestClick(event)}>run test</button>
             {testHasRun &&
             <>
                 <label>Updated Anxitey Level (out of 10)
-                    <input type="number" name="after" value={evalFormData.after} onChange={event => handleChange(event)} />
+                    <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
                 </label>
                 <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
             </>}
