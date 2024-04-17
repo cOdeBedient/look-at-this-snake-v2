@@ -4,16 +4,38 @@ import Decompression from '../Decompression/Decompression'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 
-export default function({ currentSnakes }) {
+export default function({ currentSnakes, updateUserData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
-    const [ imageTitle, setImageTitle ] = useState('Look at this Snake')
+    const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
     const [ snakeCounter, setSnakeCounter ] = useState(0)
     const [ finished, setFinished ] = useState(false)
+    const [ snakesWithPics, setSnakesWithPics ] = useState([])
+    const [ puppy, setPuppy ] = useState('')
+    const [ boxHidden, setBoxHidden] = useState('')
+    const [ snakeHidden, setSnakeHidden] = useState('hidden')
+   
 
     useEffect(() => {
-        if(currentSnakes.length > 0) {
-            setDisplayedSnake(currentSnakes[snakeCounter])
+        const updatedPicSnakes = currentSnakes.map((snake) => {
+            const snakePic = new Image()
+            snakePic.src = snake.image
+            snake.image = snakePic
+
+            return snake
+       })
+       
+       const puppyPic = new Image()
+       puppyPic.src = '/assets/cute-doodle.jpg'
+
+       setPuppy(puppyPic)
+       setSnakesWithPics(updatedPicSnakes)
+    }, [currentSnakes])
+
+
+    useEffect(() => {
+        if(snakesWithPics.length > 0) {
+            setDisplayedSnake(snakesWithPics[snakeCounter])
         }
     })
 
@@ -31,13 +53,13 @@ export default function({ currentSnakes }) {
     //     };
     //   }, [])
 
-    useEffect(() => {
-        if(panicMode) {
-            setImageTitle('Remember to Breathe') 
-        } else {
-            setImageTitle('Look at this Snake:')
-        }
-    }, [panicMode])
+    // useEffect(() => {
+    //     if(panicMode) {
+    //         setImageTitle('Remember to Breathe') 
+    //     } else {
+    //         setImageTitle('Look at this Snake:')
+    //     }
+    // }, [panicMode])
 
     // function handleKeyPress(event) {
     //     if (event.key === 'b') {
@@ -56,13 +78,15 @@ export default function({ currentSnakes }) {
     }
 
     function runTest() {
-        for(var i=100; i<3200; i+=100) {
+        setImageTitle('processing...')
+        setTimeout(() => {setImageTitle('Look at this Snake: ')}, 3100)
+        for(var i=100; i<3100; i+=100) {
             flicker(i)
         }
     }
 
     function advanceSnake(event) {
-        if(snakeCounter < currentSnakes.length - 1) {
+        if(snakeCounter < snakesWithPics.length - 1) {
             setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
         } else {
@@ -70,6 +94,11 @@ export default function({ currentSnakes }) {
         }
     }
 
+    function clickBox() {
+        setSnakeHidden('')
+        setBoxHidden('hidden')
+        setImageTitle('Look at this Snake: ')
+    }
 
     return (
         <>
@@ -80,12 +109,21 @@ export default function({ currentSnakes }) {
                     <p className="snake-title">{imageTitle}</p>
                     <div className="snake-photos-container">
                         <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
-                        {panicMode ?
-                            <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
-                            :
-                            displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
-                        }
-                        <EvaluationForm advanceSnake={advanceSnake} runTest={runTest}/>
+                            {panicMode ?
+                                <img src={puppy.src} alt="cute puppy" />
+                                :
+                                displayedSnake.image &&
+                                <>
+                                    <div className={`${snakeHidden}`}><img src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} /></div>
+                                    <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
+                                </>
+                            }
+                        <EvaluationForm
+                            snakeHidden={snakeHidden}
+                            advanceSnake={advanceSnake}
+                            runTest={runTest}
+                            displayedSnake={displayedSnake}
+                            updateUserData={updateUserData} />
                     </div> 
                 </section>
             }
