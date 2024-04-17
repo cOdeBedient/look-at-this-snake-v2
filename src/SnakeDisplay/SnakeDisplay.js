@@ -10,10 +10,25 @@ export default function({ currentSnakes }) {
     const [ imageTitle, setImageTitle ] = useState('Look at this Snake')
     const [ snakeCounter, setSnakeCounter ] = useState(0)
     const [ finished, setFinished ] = useState(false)
+    const [ snakesWithPics, setSnakesWithPics ] = useState([])
 
     useEffect(() => {
-        if(currentSnakes.length > 0) {
-            setDisplayedSnake(currentSnakes[snakeCounter])
+        const updatedPicSnakes = currentSnakes.map((snake) => {
+            const snakePic = new Image()
+            snakePic.src = snake.image
+            snake.image = snakePic
+
+            return snake
+       })
+       
+       setSnakesWithPics(updatedPicSnakes)
+    }, [currentSnakes])
+
+
+    useEffect(() => {
+        console.log("snakesWithPics line 28", snakesWithPics)
+        if(snakesWithPics.length > 0) {
+            setDisplayedSnake(snakesWithPics[snakeCounter])
         }
     })
 
@@ -62,14 +77,14 @@ export default function({ currentSnakes }) {
     }
 
     function advanceSnake(event) {
-        if(snakeCounter < currentSnakes.length - 1) {
+        console.log('here and snakes with pics is', snakesWithPics)
+        if(snakeCounter < snakesWithPics.length - 1) {
             setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
         } else {
             setFinished(true)
         }
     }
-
 
     return (
         <>
@@ -83,7 +98,7 @@ export default function({ currentSnakes }) {
                         {panicMode ?
                             <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
                             :
-                            displayedSnake.image && <img src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                            displayedSnake.image && <img src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
                         }
                         <EvaluationForm advanceSnake={advanceSnake} runTest={runTest}/>
                     </div> 
