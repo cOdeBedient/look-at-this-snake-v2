@@ -74,13 +74,22 @@ function updateUserData(snake, data) {
   setUserData(updatedUser)
 }
 
-console.log('user data', userData)
+function computeFinalAnalysis() {
+
+}
+
+console.log('currentLevel', currentLevel)
 
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
-        <Route path='/game' element={<Game currentSnakes={currentSnakes} updateUserData={updateUserData}/>} />
+        <Route path='/game' element={<Game
+                                        currentSnakes={currentSnakes}
+                                        updateUserData={updateUserData}
+                                        computeFinalAnalysis={computeFinalAnalysis}
+                                        userData={userData}
+                                        currentLevel={currentLevel}/>} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

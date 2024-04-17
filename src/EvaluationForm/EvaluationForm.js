@@ -2,7 +2,7 @@ import "./EvaluationForm.css"
 import { useState } from 'react'
 
 export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData }) {
-    const [ evalFormData, setEvalFormData] = useState({before: 0, after: 0})
+    const [ evalFormData, setEvalFormData] = useState({before: '0', after: '0'})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
     function handleChange(event) {
