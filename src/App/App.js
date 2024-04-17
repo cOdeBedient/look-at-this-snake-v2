@@ -69,7 +69,6 @@ console.log('filteredSnakes', currentSnakes)
 
 function updateUserData(snake, data) {
   const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
-
   const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
 
   setUserData(updatedUser)
