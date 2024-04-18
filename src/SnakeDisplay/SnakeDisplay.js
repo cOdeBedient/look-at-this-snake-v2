@@ -4,7 +4,7 @@ import Decompression from '../Decompression/Decompression'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 
-export default function({ currentSnakes, updateUserData, computeFinalAnalysis, userData, currentLevel }) {
+export default function({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
@@ -105,7 +105,7 @@ export default function({ currentSnakes, updateUserData, computeFinalAnalysis, u
     return (
         <>
             {finished ?
-                <Decompression computeFinalAnalysis={computeFinalAnalysis} userData={userData} currentLevel={currentLevel}/>
+                <Decompression userData={userData} currentLevel={currentLevel} resetData={resetData} />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
@@ -127,7 +127,7 @@ export default function({ currentSnakes, updateUserData, computeFinalAnalysis, u
                             displayedSnake={displayedSnake}
                             updateUserData={updateUserData}
                             currentLevel={currentLevel}
-                            computeFinalAnalysis={computeFinalAnalysis} />
+                            />
                     </div> 
                 </section>
             }

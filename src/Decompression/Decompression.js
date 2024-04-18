@@ -1,4 +1,7 @@
-export default function({userData, computeFinalAnalysis, currentLevel}) {
+import { Link } from 'react-router-dom'
+import './Decompression.css'
+
+export default function({userData, currentLevel, resetData}) {
 
     console.log("userData", userData)
     console.log("userData[currentLevel]", userData[currentLevel])
@@ -34,13 +37,24 @@ export default function({userData, computeFinalAnalysis, currentLevel}) {
         benefit = "extremely beneficial to you! We will be celebrated by science for years to come!"
     }
 
+    let spacedString = currentLevel.split('l')
+    let levelString = `${spacedString[0]}l ${spacedString[1]}`
+
+
+    function handleClick() {
+        resetData()
+    }
 
     return (
         <>
-            <h4>You completed level {currentLevel}</h4>
-            <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia</h4>
+            <h4>You completed {levelString.toLowerCase()}.</h4>
+            <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
             <h4>{fortunateness}, this treatment was {benefit}</h4>
-            <h4>Would you like to proceed to the next level? Or just give up and start researching snakeless regions to move to?</h4>
+            <h4>Would you like to continue with more processing?</h4>
+            <Link to='/' onClick={handleClick}>
+                <p className="back-button">return to homepage</p>
+            </Link>
+            {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
         </>
 
     )

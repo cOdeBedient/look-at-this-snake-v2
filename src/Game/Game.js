@@ -3,7 +3,7 @@ import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
 import { useState, useEffect } from 'react'
 
 
-export default function Game({ currentSnakes, updateUserData, userData, computeFinalAnalysis, currentLevel }) {
+export default function Game({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
 
     console.log("currentLevel", currentLevel)
 
@@ -17,9 +17,9 @@ export default function Game({ currentSnakes, updateUserData, userData, computeF
                     <SnakeDisplay
                         currentSnakes={currentSnakes}
                         updateUserData={updateUserData}
-                        computeFinalAnalysis={computeFinalAnalysis}
                         userData={userData}
-                        currentLevel={currentLevel} />
+                        currentLevel={currentLevel}
+                        resetData={resetData} />
                 </div>
             </main>
         </>

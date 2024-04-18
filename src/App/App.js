@@ -74,8 +74,10 @@ function updateUserData(snake, data) {
   setUserData(updatedUser)
 }
 
-function computeFinalAnalysis() {
-
+function resetData() {
+  setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+  setCurrentSnakes([])
+  setCurrentLevel('')
 }
 
 console.log('currentLevel', currentLevel)
@@ -87,9 +89,9 @@ console.log('currentLevel', currentLevel)
         <Route path='/game' element={<Game
                                         currentSnakes={currentSnakes}
                                         updateUserData={updateUserData}
-                                        computeFinalAnalysis={computeFinalAnalysis}
                                         userData={userData}
-                                        currentLevel={currentLevel}/>} />
+                                        currentLevel={currentLevel}
+                                        resetData={resetData} />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>
