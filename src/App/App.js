@@ -23,6 +23,7 @@ function handleError(error) {
 useEffect(() => {
   getData()
   .then(([zones, snakes]) => {
+    console.log("snakes", snakes)
     const preppedSnakes = snakes.snakes.map((snake) => {
       return {
         ...snake,

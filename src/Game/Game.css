@@ -14,13 +14,13 @@ main {
 
 header {
     background-color: black;
-    /* background-color: rgb(55, 102, 163); */
     padding: 10px 0px 10px 10px;
 }
 
 .mainpage-header {
     color: white;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 10px 0 10px 15px;
     font-size: 1.25em;
+    border: none;
+    padding: 0;
 }

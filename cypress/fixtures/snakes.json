@@ -1,0 +1,16 @@
+{
+  "snakes" : [
+    { "name": "Corn Snake", "isVenemous": false, "isAggressive": false, "image": "https://www.thesprucepets.com/thmb/n0QvLg46o27XE8PjQSVtR6m7ZIo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/corn-snake-from-the-lower-florida-keys-530475947-588124bc5f9b58bdb3ec9f93.jpg" },
+    { "name": "Ball Python", "isVenemous": false, "isAggressive": false, "image": "https://kinovareptiles.com/wp-content/uploads/2019/04/2016-10-24-15.17.17_2-1024x887.jpg" },
+    { "name": "King Snake", "isVenemous": false, "isAggressive": true, "image": "https://msherps.com/wp-content/uploads/2021/08/Lhol-1-scaled.jpg" },
+    { "name": "Garter Snake", "isVenemous": false, "isAggressive": true, "image": "https://msherps.com/wp-content/uploads/2021/08/IMG_4769-edited-scaled.jpg" },
+    { "name": "Milk Snake", "isVenemous": false, "isAggressive": false, "image": "https://reptilerapture.net/assets/images/honduran-milksnake-adult-female-5feet.jpg" },
+    { "name": "Rosy Boa", "isVenemous": false, "isAggressive": true, "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/36509403/original.jpeg" },
+    { "name": "Copperhead", "isVenemous": true, "isAggressive": false, "image": "https://i.redd.it/ncbzr0lrigaa1.jpg" },
+    { "name": "Cottonmouth", "isVenemous": true, "isAggressive": true, "image": "https://www.nps.gov/bith/learn/nature/images/cottonmouth_USFWS-photo_JesusMoreno.jpg" },
+    { "name": "Rattlesnake", "isVenemous": true, "isAggressive": false, "image": "https://people.com/thmb/hFHkzxCULdyfKBuLH6BzL3Bif30=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(735x198:737x200)/rattlesnake-discovery-082123-tout-5ddc306ccb8c45b5891c6d6ac0b0fbe7.jpg" },
+    { "name": "Cobra", "isVenemous": true, "isAggressive": true, "image": "https://people.com/thmb/EmUZlWzaFV0o9Lr1K8XbmXtc4m8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(749x0:751x2)/cobra-040523-4264ad06aec145a991c94ecda8be78a6.jpg" },
+    { "name": "Taipan", "isVenemous": true, "isAggressive": false, "image": "https://media.pri.org/s3fs-public/56809792.jpg" },
+    { "name": "Black Mamba", "isVenemous": true, "isAggressive": true, "image": "https://www.treehugger.com/thmb/U-UNHRGofknYfPuhVt0Ap9QQ_yM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-182381530-c11214cea58a42a4b414e9d9d823fdcb.jpg" }
+  ]
+}
