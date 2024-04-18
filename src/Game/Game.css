@@ -4,10 +4,12 @@
 
 main {
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    background-image: url('../../public/assets/tiles.png');
+    background-size: cover;
 }
 
 header {

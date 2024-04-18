@@ -65,8 +65,6 @@ function filterSnakes(level) {
   setCurrentSnakes(snakeSet)
 }
 
-console.log('filteredSnakes', currentSnakes)
-
 function updateUserData(snake, data) {
   const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
   const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
@@ -79,8 +77,6 @@ function resetData() {
   setCurrentSnakes([])
   setCurrentLevel('')
 }
-
-console.log('currentLevel', currentLevel)
 
   return (
     <>

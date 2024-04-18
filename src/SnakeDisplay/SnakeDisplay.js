@@ -3,8 +3,9 @@ import './SnakeDisplay.css'
 import Decompression from '../Decompression/Decompression'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
+import PropTypes from 'prop-types'
 
-export default function({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
+export default function SnakeDisplay({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
@@ -14,7 +15,7 @@ export default function({ currentSnakes, updateUserData, userData, currentLevel,
     const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
-   
+
 
     useEffect(() => {
         const updatedPicSnakes = currentSnakes.map((snake) => {
@@ -100,8 +101,6 @@ export default function({ currentSnakes, updateUserData, userData, currentLevel,
         setImageTitle('Look at this Snake: ')
     }
 
-    console.log("currentLevel", currentLevel)
-
     return (
         <>
             {finished ?
@@ -126,11 +125,20 @@ export default function({ currentSnakes, updateUserData, userData, currentLevel,
                             runTest={runTest}
                             displayedSnake={displayedSnake}
                             updateUserData={updateUserData}
-                            currentLevel={currentLevel}
                             />
                     </div> 
                 </section>
             }
         </>
     )
+}
+
+SnakeDisplay.propTypes = {
+    currentSnakes: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        isVenemous: PropTypes.bool.isRequired,
+        isAggressive: PropTypes.bool.isRequired,
+        image: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired
+    })).isRequired
 }

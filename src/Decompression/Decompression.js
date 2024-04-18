@@ -1,12 +1,8 @@
 import { Link } from 'react-router-dom'
 import './Decompression.css'
+import PropTypes from 'prop-types'
 
-export default function({userData, currentLevel, resetData}) {
-
-    console.log("userData", userData)
-    console.log("userData[currentLevel]", userData[currentLevel])
-    console.log("currentLevel", currentLevel)
-
+export default function Decompression({userData, currentLevel, resetData}) {
     const stressTotals = userData[currentLevel].reduce((acc, snake) => {
         acc.beforeAvg += snake.beforeTotal/10
         acc.afterAvg += snake.afterTotal/10
@@ -60,43 +56,14 @@ export default function({userData, currentLevel, resetData}) {
     )
 }
 
-// userData at end 
-// Object
-// Level1
-// : 
-// Array(10)
-// 0
-// {snake: 'Corn Snake', stressBefore: 0, stressAfter: 0}
-// 1
-// {snake: 'Ball Python', stressBefore: '4', stressAfter: '2'}
-// 2
-// {snake: 'Milk Snake', stressBefore: '5', stressAfter: '2'}
-// 3
-// {snake: 'Rat Snake', stressBefore: '8', stressAfter: '1'}
-// 4
-// {snake: 'Gopher Snake', stressBefore: '6', stressAfter: '5'}
-// 5
-// {snake: 'Blue Racer', stressBefore: '9', stressAfter: '9'}
-// 6
-// {snake: 'Coachwhip Snake', stressBefore: '5', stressAfter: '3'}
-// 7
-// {snake: 'Cape Gopher Snake', stressBefore: '6', stressAfter: '2'}
-// 8
-// {snake: 'Longnose Snake', stressBefore: '8', stressAfter: '3'}
-// 9
-// {snake: 'Plains Hognose Snake', stressBefore: '5', stressAfter: '2'}
-// length
-// : 
-// 10
-// [[Prototype]]
-// : 
-// Array(0)
-// Level2
-// : 
-// []
-// Level3
-// : 
-// []
-// Level4
-// : 
-// []
+Decompression.propTypes = {
+    userData: PropTypes.shape({
+        Level1: PropTypes.array.isRequired,
+        Level2: PropTypes.array.isRequired,
+        Level3: PropTypes.array.isRequired,
+        Level4: PropTypes.array.isRequired
+    }).isRequired,
+    currentLevel: PropTypes.string.isRequired,
+    resetData: PropTypes.func.isRequired,
+    
+}

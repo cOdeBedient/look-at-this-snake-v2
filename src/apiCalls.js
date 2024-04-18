@@ -16,12 +16,9 @@ function fetchData() {
 function getData() {
     return Promise.all(fetchData())
         .then(responses => {
-            console.log('responses', responses)
          if (responses.every(response => response.ok)) {
            return responses
          } else {
-          //  let responseText = responses.find(response => !response.ok).statusText
-          //  let responseCode = responses.find(response => !response.ok).status
            throw new Error(`Ssssomething went wrong. Try again sssssooon!`)
          }
         })
@@ -32,7 +29,6 @@ function getData() {
         })
          .catch(error => {
            let errorText = error.message
-          //  console.log('Fetch Error')
            throw new Error(`${errorText}`)
          })  
         }
