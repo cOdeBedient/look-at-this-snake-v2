@@ -8,7 +8,7 @@ export default function Game({ currentSnakes, updateUserData, userData, currentL
     return (
         <>
             <header>
-                <h2 className="mainpage-header">LATSTLATP</h2>
+                <h1 className="mainpage-header">LATSTLATP</h1>
             </header>
             <main>
                 <div>

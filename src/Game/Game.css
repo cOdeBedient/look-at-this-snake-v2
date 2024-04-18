@@ -19,6 +19,8 @@ header {
 
 .mainpage-header {
     color: white;
-    margin: 0 0 0 15px;
+    margin: 10px 0 10px 15px;
     font-size: 1.25em;
+    border: none;
+    padding: 0;
 }
