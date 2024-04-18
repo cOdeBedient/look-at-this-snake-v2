@@ -1,0 +1,9 @@
+{
+    "noSnakeZones": [
+        { "id": "1", "region": "Ireland", "livability": "High", "costOfLiving": "Moderate", "hasSnakes": false, "description": "Ireland is famous for its lush green landscapes, rich cultural heritage, and friendly people. Snakes have never been native to Ireland, adding to its charm." },
+        { "id": "2", "region": "Hawaii", "livability": "High", "costOfLiving": "High", "hasSnakes": false, "description": "Hawaii is renowned for its tropical beauty, laid-back lifestyle, and diverse culture. While there are a few non-native snake species, they are not established, and the islands remain largely snake-free." },
+        { "id": "3", "region": "Faroe Islands", "livability": "Moderate", "costOfLiving": "Moderate", "hasSnakes": false, "description": "The Faroe Islands offer stunning natural landscapes, a rich Viking history, and a close-knit community. Snakes are not native to these islands, making them safe from snake encounters." },
+        { "id": "4", "region": "Svalbard (Norway)", "livability": "Low", "costOfLiving": "N/A", "hasSnakes": false, "description": "Svalbard is an Arctic archipelago known for its polar bears, glaciers, and remote wilderness. Due to its extreme climate, snakes are absent from Svalbard." },
+        { "id": "5", "region": "Falkland Islands", "livability": "Moderate", "costOfLiving": "Moderate", "hasSnakes": false, "description": "The Falkland Islands offer rugged landscapes, abundant wildlife, and a peaceful atmosphere. Snakes are not native to these islands, making them safe for exploration." }
+    ]
+}
