@@ -1,5 +1,6 @@
 import "./EvaluationForm.css"
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
 export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData }) {
     const [ evalFormData, setEvalFormData] = useState({before: '0', after: '0'})
@@ -15,7 +16,6 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     }
 
     function handleRunTestClick(event) {
-        console.log('made it in here')
         event.preventDefault()
         runTest()
         setTimeout(() => {setTestHasRun(true)}, 3200)
@@ -37,20 +37,34 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
         snakeHidden === '' &&
         <form className='evaluation-form'>
             {testHasRun ?
-            <>
-                <label>Updated Anxitey Level (out of 10)
-                    <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
-                </label>
-                <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
-             </>
-            :
-            <>
-                <label>Starting Anxitey Level (out of 10)
-                    <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
-                </label>
-                <button onClick={event => handleRunTestClick(event)}>run test</button>
-            </>
-        }
+                <>
+                    <label>Updated Anxitey Level (out of 10)
+                        <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
+                    </label>
+                    <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
+                </>
+                :
+                <>
+                    <label>Starting Anxitey Level (out of 10)
+                        <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
+                    </label>
+                    <button onClick={event => handleRunTestClick(event)}>initiate processing</button>
+                </>
+            }
         </form>
     )
+}
+
+EvaluationForm.propTypes = {
+    displayedSnake: PropTypes.shape({
+        name: PropTypes.string,
+        isVenmous: PropTypes.bool,
+        isAggressive: PropTypes.bool,
+        image: PropTypes.object,
+        isFavorite: PropTypes.bool
+    }).isRequired,
+    snakeHidden: PropTypes.string.isRequired,
+    advanceSnake: PropTypes.func.isRequired,
+    runTest: PropTypes.func.isRequired,
+    updateUserData: PropTypes.func.isRequired
 }

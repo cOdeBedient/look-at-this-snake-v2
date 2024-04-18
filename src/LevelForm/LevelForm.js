@@ -1,6 +1,7 @@
 import './LevelForm.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export default function LevelForm( { filterSnakes }) {
     const [formSelector, setFormSelector] = useState('1')
@@ -33,4 +34,8 @@ export default function LevelForm( { filterSnakes }) {
             </Link>
         </section>
     )
+}
+
+LevelForm.propTypes = {
+    filterSnakes: PropTypes.func.isRequired
 }

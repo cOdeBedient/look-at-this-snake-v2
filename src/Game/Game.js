@@ -1,11 +1,9 @@
 import './Game.css'
 import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
-import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 
 export default function Game({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
-
-    console.log("currentLevel", currentLevel)
 
     return (
         <>
