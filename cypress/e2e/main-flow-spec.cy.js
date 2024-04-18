@@ -55,6 +55,7 @@ describe('LATSTLATP', () => {
     .click()
 
     .get('.snake-display').contains('p', "Look at this Snake:")
+    .get('.snake-display').find('img').should('have.attr', 'src').should('include', 'https://www.thesprucepets.com/thmb/n0QvLg46o27XE8PjQSVtR6m7ZIo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/corn-snake-from-the-lower-florida-keys-530475947-588124bc5f9b58bdb3ec9f93.jpg')
     .get('form').contains('label', "Starting Anxiety Level (out of 10)")
     .get("form").get('input[name="before"]').should("have.value", "0")
     .get("form").get('input[name="before"]').type('3').should("have.value", "03")
@@ -70,7 +71,35 @@ describe('LATSTLATP', () => {
     .get("form").get('input[name="after"]').should("have.value", "0")
     .get("form").get('input[name="after"]').type('1').should("have.value", "01")
     .get("form").get('button').contains("I'm ready to see the next snake")
+    .click()
 
+    .get('.snake-display').find('img').should('have.attr', 'src').should('include', 'https://kinovareptiles.com/wp-content/uploads/2019/04/2016-10-24-15.17.17_2-1024x887.jpg')
+    .get("form").get('input[name="before"]').type('7').should("have.value", "07")
+    .get("form").get('button').contains("initiate processing")
+    .click()
 
+    cy.tick(3300)
+    .get("form").get('input[name="after"]').type('3').should("have.value", "03")
+    .get("form").get('button').contains("I'm ready to see the next snake")
+    .click()
+
+    .get('.snake-display').find('img').should('have.attr', 'src').should('include', 'https://reptilerapture.net/assets/images/honduran-milksnake-adult-female-5feet.jpg')
+    .get("form").get('input[name="before"]').type('7').should("have.value", "07")
+    .get("form").get('button').contains("initiate processing")
+    .click()
+
+    cy.tick(3300)
+    .get("form").get('input[name="after"]').type('6').should("have.value", "06")
+    .get("form").get('button').contains("I'm ready to see the next snake")
+    .click()
+
+    .get('header').contains('h1', 'LATSTLATP')
+    .get('h4').contains('You completed level 1.')
+    .get('h4').contains('Your compiled pre-treatment fear totals indicate a high level of ophidiophobia.')
+    .get('h4').contains('Fortunately, this treatment was extremely beneficial to you! We will be celebrated by science for years to come!')
+    .get('h4').contains('Would you like to continue with more processing?')
+    .get('.back-button').contains('return to homepage')
+    .click()
+    .url().should('eq', 'http://localhost:3001/')
   })
 })
