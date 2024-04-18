@@ -4,7 +4,7 @@ import Decompression from '../Decompression/Decompression'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 
-export default function({ currentSnakes, updateUserData }) {
+export default function({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
@@ -80,7 +80,7 @@ export default function({ currentSnakes, updateUserData }) {
     function runTest() {
         setImageTitle('processing...')
         setTimeout(() => {setImageTitle('Look at this Snake: ')}, 3100)
-        for(var i=100; i<3100; i+=100) {
+        for(var i=50; i<3150; i+=50) {
             flicker(i)
         }
     }
@@ -100,10 +100,12 @@ export default function({ currentSnakes, updateUserData }) {
         setImageTitle('Look at this Snake: ')
     }
 
+    console.log("currentLevel", currentLevel)
+
     return (
         <>
             {finished ?
-                <Decompression />
+                <Decompression userData={userData} currentLevel={currentLevel} resetData={resetData} />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
@@ -123,7 +125,9 @@ export default function({ currentSnakes, updateUserData }) {
                             advanceSnake={advanceSnake}
                             runTest={runTest}
                             displayedSnake={displayedSnake}
-                            updateUserData={updateUserData} />
+                            updateUserData={updateUserData}
+                            currentLevel={currentLevel}
+                            />
                     </div> 
                 </section>
             }

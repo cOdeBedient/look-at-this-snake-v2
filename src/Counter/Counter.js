@@ -6,7 +6,7 @@ export default function Counter({ currentSnakes, snakeCounter }) {
         if (index <= snakesLeft) {
             let text
             if (index === snakesLeft) {
-                text = `•${index + 1}`
+                text = `••${index + 1}`
             } else {
                 text = index + 1
             }

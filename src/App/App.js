@@ -74,13 +74,24 @@ function updateUserData(snake, data) {
   setUserData(updatedUser)
 }
 
-console.log('user data', userData)
+function resetData() {
+  setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+  setCurrentSnakes([])
+  setCurrentLevel('')
+}
+
+console.log('currentLevel', currentLevel)
 
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage filterSnakes={filterSnakes}/>} />
-        <Route path='/game' element={<Game currentSnakes={currentSnakes} updateUserData={updateUserData}/>} />
+        <Route path='/game' element={<Game
+                                        currentSnakes={currentSnakes}
+                                        updateUserData={updateUserData}
+                                        userData={userData}
+                                        currentLevel={currentLevel}
+                                        resetData={resetData} />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

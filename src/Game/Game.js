@@ -3,14 +3,25 @@ import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
 import { useState, useEffect } from 'react'
 
 
-export default function Game({ currentSnakes, updateUserData }) {
+export default function Game({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
+
+    console.log("currentLevel", currentLevel)
 
     return (
-        <main>
-            <div>
-                <SnakeDisplay currentSnakes={currentSnakes} updateUserData={updateUserData}/>
-                {/* <RatingBar /> */}
-            </div>
-        </main>
+        <>
+            <header>
+                <h2 className="mainpage-header">LATSTLATP</h2>
+            </header>
+            <main>
+                <div>
+                    <SnakeDisplay
+                        currentSnakes={currentSnakes}
+                        updateUserData={updateUserData}
+                        userData={userData}
+                        currentLevel={currentLevel}
+                        resetData={resetData} />
+                </div>
+            </main>
+        </>
     )
 }
