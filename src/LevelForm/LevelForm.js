@@ -1,4 +1,4 @@
-import './LevelForm.css'
+import { StyledLevelForm } from './LevelForm.styled'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -16,7 +16,7 @@ export default function LevelForm( { filterSnakes }) {
     }
 
     return (
-        <section className="level-form">
+        <StyledLevelForm>
             <label>
                 <input name="level" type="radio" id="1" onChange={event => handleChange(event)} checked={formSelector === "1" ? true : false}></input>Level 1 | 
             </label>
@@ -32,7 +32,7 @@ export default function LevelForm( { filterSnakes }) {
             <Link to='/game' onClick={handleClick}>
                 <p>breathe. . . then click this button to begin</p>
             </Link>
-        </section>
+        </StyledLevelForm>
     )
 }
 
