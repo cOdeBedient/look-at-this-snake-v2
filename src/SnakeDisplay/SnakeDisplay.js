@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './SnakeDisplay.css'
+import { StyledSnakeDisplay } from './SnakeDisplay.styled'
 import Decompression from '../Decompression/Results'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
@@ -102,7 +102,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     }
 
     return (
-        <>
+        <StyledSnakeDisplay>
             {finished ?
                 <Decompression userData={userData} currentLevel={currentLevel} resetData={resetData} />
                 :
@@ -130,7 +130,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                     </div> 
                 </section>
             }
-        </>
+        </StyledSnakeDisplay>
     )
 }
 
