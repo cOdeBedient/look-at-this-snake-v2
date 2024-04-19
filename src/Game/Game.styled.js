@@ -15,11 +15,6 @@ export const StyledGame = styled.div`
         background-size: repeat;
     }
 
-    header {
-        background-color: black;
-        padding: 10px 0px 10px 10px;
-    }
-
     .mainpage-header {
         color: white;
         margin: 10px 0 10px 15px;

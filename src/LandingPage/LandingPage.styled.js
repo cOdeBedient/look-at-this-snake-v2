@@ -2,32 +2,53 @@ import styled from 'styled-components'
 
 export const StyledLandingPage = styled.div`
     height: 100vh;
-    background-image: url(/assets/puppy-wide-blue-background.jpg);
-    /* background-image: url(/assets/snake-dog.png); */
+    /* background-image: url(/assets/puppy-wide-blue-background.jpg); */
     /* background-size: 15%; */
-    background-size: cover;
     position: absolute;
     width: 100vw;
   
-    h1 {
-      color: white;
-      margin-left: 100px;
-      margin-top: 200px;
-      margin-bottom: 5px;
-      padding-top: 15px;
-      border-top: 1px solid white;
+    ::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      height:100%;
+      z-index: -1;
+      background-color: grey;
+      background-image: url(/assets/snake-dog.png);
+      opacity: .03;
+      background-size: 55%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    section {
+      background-color: rgb(255, 255, 255, .55);
+      padding: 10px 10px 10px 10px;
+      margin-top: 150px;
       width: fit-content;
+      margin-left: 100px;
+      margin-left: 100px;
     }
 
     h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      margin-top: 0;
+      width: fit-content;
+    }
+
+    h3 {
       font-size: 1.15em;
       font-style: italic;
-      margin-left: 100px;
       margin-top: 0;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       width: fit-content;
-      padding-bottom: 15px;
-      border-bottom: 1px solid white;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
     }
 
     a {
@@ -36,10 +57,11 @@ export const StyledLandingPage = styled.div`
 
     p {
       color: black;
-      background-color: white;
+      background-color: lightgrey;
+      border: 2px solid black;
       width: fit-content;
       margin-top: 30px;
       padding: 4px 8px 4px 8px;
-      border-radius: 4px;
+      /* border-radius: 4px; */
     }
 `
