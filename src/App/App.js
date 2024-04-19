@@ -1,4 +1,3 @@
-import './App.css';
 import { useState, useEffect } from 'react'
 import { getData } from '../apiCalls'
 import LandingPage from '../LandingPage/LandingPage'

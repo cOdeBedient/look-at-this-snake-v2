@@ -1,4 +1,4 @@
-import './Counter.css'
+import { StyledCounter } from './Counter.styled'
 
 export default function Counter({ currentSnakes, snakeCounter }) {
     const snakesLeft = currentSnakes.length - snakeCounter - 1
@@ -11,8 +11,8 @@ export default function Counter({ currentSnakes, snakeCounter }) {
                 text = index + 1
             }
             acc.push(
-            <div className='snake-box-container' >
-                <p className="counter">{text}</p>
+            <div>
+                <p>{text}</p>
             </div>)
         }
 
@@ -20,8 +20,8 @@ export default function Counter({ currentSnakes, snakeCounter }) {
     }, [])
 
     return (
-        <div className="boxes">
+        <StyledCounter>
             {snakeBoxes}
-        </div>
+        </StyledCounter>
     )
 }
