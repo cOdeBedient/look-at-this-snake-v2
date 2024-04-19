@@ -1,4 +1,4 @@
-import './Game.css'
+import { StyledGame } from './Game.styled'
 import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
 import PropTypes from 'prop-types'
 
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 export default function Game({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
 
     return (
-        <>
+        <StyledGame>
             <header>
                 <h1 className="mainpage-header">LATSTLATP</h1>
             </header>
@@ -20,6 +20,6 @@ export default function Game({ currentSnakes, updateUserData, userData, currentL
                         resetData={resetData} />
                 </div>
             </main>
-        </>
+        </StyledGame>
     )
 }

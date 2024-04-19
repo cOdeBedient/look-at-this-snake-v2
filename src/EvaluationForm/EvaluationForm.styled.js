@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledEvaluationForm = styled.section`
+export const StyledEvaluationForm = styled.form`
     display: flex;
     flex-direction: column;
     margin-left: 15px;
