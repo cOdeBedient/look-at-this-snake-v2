@@ -29,8 +29,6 @@ export default function Error() {
     y: 320
     };
 
-    // get random whole numbers in a specific range
-    // @see https://stackoverflow.com/a/1527820/2124254
     function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
     }
@@ -150,9 +148,9 @@ export default function Error() {
 
     return (
         <div className="error">
-            <h2>Sssssomething went wrong! Try again sssssssoon.</h2>
+            <p>We've experienced some technical difficulties.<br></br> Please enjoy this game of Snake while we work to resolve the issue.</p>
             <canvas width="400" height="400" id="game"></canvas>
-            <button onClick={runGame}>or just forget all this and play snake</button>
+            <button onClick={runGame}>start game</button>
         </div>
     )
 }
