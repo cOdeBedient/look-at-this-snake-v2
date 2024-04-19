@@ -24,7 +24,7 @@ export default function Decompression({userData, currentLevel, resetData}) {
     let difference = stressTotals.beforeAvg - stressTotals.afterAvg
     if (difference < 3) {
         fortunateness = "Unfortunately"
-        benefit = "not very beneficial to you."
+        benefit = "not very beneficial to you. Most likely you have misused the test."
     } else if (difference < 6) {
         fortunateness = "Fortunately"
         benefit = "very beneficial to you."

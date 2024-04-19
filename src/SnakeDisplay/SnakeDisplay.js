@@ -125,6 +125,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                             runTest={runTest}
                             displayedSnake={displayedSnake}
                             updateUserData={updateUserData}
+                            snakeCounter={snakeCounter}
                             />
                     </div> 
                 </section>

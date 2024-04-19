@@ -1,8 +1,9 @@
 import "./EvaluationForm.css"
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData }) {
+export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData, snakeCounter }) {
     const [ evalFormData, setEvalFormData] = useState({before: '0', after: '0'})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
@@ -41,7 +42,13 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
                     <label>Updated Anxiety Level (out of 10)
                         <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
                     </label>
-                    <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
+                    { snakeCounter < 9 ?
+                        <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
+                        :
+                        <Link to='/results'>
+                            <button>see results</button>
+                        </Link>
+                    }
                 </>
                 :
                 <>
@@ -64,6 +71,7 @@ EvaluationForm.propTypes = {
         isFavorite: PropTypes.bool
     }).isRequired,
     snakeHidden: PropTypes.string.isRequired,
+    snakeCounter: PropTypes.number.isRequired,
     advanceSnake: PropTypes.func.isRequired,
     runTest: PropTypes.func.isRequired,
     updateUserData: PropTypes.func.isRequired
