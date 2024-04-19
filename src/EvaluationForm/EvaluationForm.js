@@ -1,4 +1,4 @@
-import "./EvaluationForm.css"
+import { StyledEvaluationForm } from "./EvaluationForm.styled"
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
@@ -36,7 +36,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
 
     return (
         snakeHidden === '' &&
-        <form className='evaluation-form'>
+        <StyledEvaluationForm>
             {testHasRun ?
                 <>
                     <label>Updated Anxiety Level (out of 10)
@@ -58,7 +58,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
                     <button onClick={event => handleRunTestClick(event)}>initiate processing</button>
                 </>
             }
-        </form>
+        </StyledEvaluationForm>
     )
 }
 
