@@ -1,9 +1,9 @@
 function fetchZones() {
-    return fetch('http://localhost:3000/api/v1/noSnakeZones/')
+    return fetch('https://look-at-this-snake-api.onrender.com/api/v1/noSnakeZones')
 }
 
 function fetchSnakes() {
-    return fetch('http://localhost:3000/api/v1/snakes/')
+    return fetch('https://look-at-this-snake-api.onrender.com/api/v1/snakes')
 }
 
 function fetchData() {
