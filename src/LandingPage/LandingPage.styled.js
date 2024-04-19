@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const StyledLandingPage = styled.div`
     height: 100vh;
-    background-image: url('../../public/assets/puppy-wide-blue-background.jpg');
-    /* background-image: url('../../public/assets/snake-dog.png'); */
+    background-image: url(/assets/puppy-wide-blue-background.jpg);
+    /* background-image: url(/assets/snake-dog.png); */
     /* background-size: 15%; */
     background-size: cover;
     position: absolute;

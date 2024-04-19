@@ -11,7 +11,7 @@ export const StyledGame = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-image: url('../../public/assets/tiles.png');
+        background-image: url(/assets/tiles.png);
         background-size: repeat;
     }
 
