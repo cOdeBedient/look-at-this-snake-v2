@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './SnakeDisplay.css'
-import Decompression from '../Decompression/Decompression'
+import Decompression from '../Decompression/Results'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 import PropTypes from 'prop-types'

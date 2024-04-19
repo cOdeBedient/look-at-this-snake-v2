@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './Decompression.css'
+import { StyledResults } from './Results.styled'
 import PropTypes from 'prop-types'
 
 export default function Decompression({userData, currentLevel, resetData}) {
@@ -42,7 +42,7 @@ export default function Decompression({userData, currentLevel, resetData}) {
     }
 
     return (
-        <>
+        <StyledResults>
             <h4>You completed {levelString.toLowerCase()}.</h4>
             <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
             <h4>{fortunateness}, this treatment was {benefit}</h4>
@@ -51,7 +51,7 @@ export default function Decompression({userData, currentLevel, resetData}) {
                 <p className="back-button">return to homepage</p>
             </Link>
             {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
-        </>
+        </StyledResults>
 
     )
 }

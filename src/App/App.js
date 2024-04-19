@@ -3,7 +3,7 @@ import { getData } from '../apiCalls'
 import LandingPage from '../LandingPage/LandingPage'
 import Error from '../Error/Error'
 import Game from '../Game/Game'
-import Decompression from '../Decompression/Decompression'
+import Decompression from '../Decompression/Results'
 import { Route, Routes } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
