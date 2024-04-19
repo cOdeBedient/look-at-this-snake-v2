@@ -37,7 +37,14 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     return (
         snakeHidden === '' &&
         <StyledEvaluationForm>
-            {testHasRun ?
+            
+                <>
+                    <label>Starting Anxiety Level (out of 10)
+                        <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} disabled={testHasRun} />
+                    </label>
+                    <button onClick={event => handleRunTestClick(event)} disabled={testHasRun}>initiate processing</button>
+                </>
+                {testHasRun &&
                 <>
                     <label>Updated Anxiety Level (out of 10)
                         <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
@@ -49,14 +56,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
                             <button>see results</button>
                         </Link>
                     }
-                </>
-                :
-                <>
-                    <label>Starting Anxiety Level (out of 10)
-                        <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} />
-                    </label>
-                    <button onClick={event => handleRunTestClick(event)}>initiate processing</button>
-                </>
+                </> 
             }
         </StyledEvaluationForm>
     )

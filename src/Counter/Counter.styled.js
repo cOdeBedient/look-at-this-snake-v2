@@ -12,4 +12,8 @@ export const StyledCounter = styled.div`
         margin-bottom: 15px;
         text-align: right;
     }
+
+    p {
+        margin: 11px 0;
+    }
 `

@@ -20,6 +20,11 @@ export const StyledSnakeDisplay = styled.div`
         padding: 10px;
         border: 2px solid black;
         background-color: grey;
+        background-image: url(/assets/snake-dog.png);
+        background-size: 35%;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(25%);
     }
 
     .snake-display {
