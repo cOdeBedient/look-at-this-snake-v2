@@ -76,7 +76,7 @@ export const StyledSnakeDisplay = styled.div`
         }
 
         .snake-photos-container {
-        display: flex;
+        align-items: center;
         width: 650px;
         }
     }
@@ -89,14 +89,21 @@ export const StyledSnakeDisplay = styled.div`
 
         img {
             width: 75vw;
-            height: 80%;
+            height: 40vw;
             padding: 10px;
         }
 
         .start-box {
-            width: 80vw;
-            height: 80%;
+            width: 75vw;
+            height: 40vw;
             background-size: 35%;
+        }
+
+        p {
+            text-align: center;
+            margin-right: 0 !important;
+            padding-right: 10px;
+            padding-left: 10px;
         }
     }
 `

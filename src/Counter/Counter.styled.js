@@ -13,20 +13,24 @@ export const StyledCounter = styled.div`
 
     @media screen and (max-width: 1024px) {
         p {
-            margin: 6.5px 0;
+            margin: 5.5px 0;
         }
     }
 
     @media screen and (max-width: 767px) {
         p {
             font-size: .8em;
-            margin-top: 6px !important;
+            margin-top: 3px !important;
+            margin-bottom: 3px;
+            padding-right: 5px;
         }
     }
 
     @media screen and (max-width: 450px) {
         p {
-            margin-top: 1px !important;
+            margin-top: 0px !important;
+            margin-bottom: 1px;
+            padding-right: 2px;
         }
 
     }
