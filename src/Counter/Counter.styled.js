@@ -7,13 +7,27 @@ export const StyledCounter = styled.div`
         align-items: end;
         width: 15px;
 
-    .counter {
-        margin: 0;
-        margin-bottom: 15px;
-        text-align: right;
-    }
-
     p {
         margin: 11px 0;
+    }
+
+    @media screen and (max-width: 1024px) {
+        p {
+            margin: 6.5px 0;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        p {
+            font-size: .8em;
+            margin-top: 6px !important;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        p {
+            margin-top: 1px !important;
+        }
+
     }
 `

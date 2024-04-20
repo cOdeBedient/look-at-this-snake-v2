@@ -39,6 +39,10 @@ export const StyledSnakeDisplay = styled.div`
         width: 800px;
     }
 
+    .snake-and-counter {
+        display: flex;
+    }
+
     button {
         margin-top: 15px;
         color: white;
@@ -51,5 +55,48 @@ export const StyledSnakeDisplay = styled.div`
 
     .hidden {
         display: none;
+    }
+
+
+    @media screen and (max-width: 1024px) {
+        img {
+            height: 300px;
+            width: 450px;
+            padding: 10px;
+        }
+
+        .start-box {
+            height: 300px;
+            width: 450px;
+            padding: 10px;
+        }
+
+        .snake-display {
+            margin-top: 55px;
+        }
+
+        .snake-photos-container {
+        display: flex;
+        width: 650px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .snake-photos-container {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        img {
+            width: 75vw;
+            height: 80%;
+            padding: 10px;
+        }
+
+        .start-box {
+            width: 80vw;
+            height: 80%;
+            background-size: 35%;
+        }
     }
 `

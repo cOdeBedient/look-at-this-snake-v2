@@ -110,16 +110,18 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
                     <div className="snake-photos-container">
-                        <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
+                        <div className="snake-and-counter">
+                            <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
                             {panicMode ?
                                 <img src={puppy.src} alt="cute puppy" />
                                 :
                                 displayedSnake.image &&
                                 <>
                                     <div className={`${snakeHidden}`}><img src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} /></div>
-                                    <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
+                                    <div><div onClick={clickBox} className={`start-box ${boxHidden}`}></div></div>
                                 </>
                             }
+                        </div>
                         <EvaluationForm
                             snakeHidden={snakeHidden}
                             advanceSnake={advanceSnake}
