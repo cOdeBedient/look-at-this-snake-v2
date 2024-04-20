@@ -7,7 +7,7 @@ export const StyledEvaluationForm = styled.form`
     width: 150px;
     text-align: center;
 
-    label {
+    .eval-form {
         margin-top: 60px;
     }
 
@@ -15,5 +15,31 @@ export const StyledEvaluationForm = styled.form`
         margin-top: 10px;
         width: 140px;
         text-align: center;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .eval-form {
+        margin-top: 30px;
+    }
+    }
+
+    @media screen and (max-width: 767px) {
+        flex-direction: row;
+        width: 80%;
+
+        .eval-form {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+            margin: 10px;
+        }
+
+        input {
+            width: 90%;
+        }
+
+        label {
+        margin-top: 0;
+        }
     }
 `

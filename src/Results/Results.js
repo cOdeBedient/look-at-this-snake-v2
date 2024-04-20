@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { StyledResults } from './Results.styled'
 import PropTypes from 'prop-types'
+import Header from '../Header/Header'
 
 export default function Results({userData, currentLevel, resetData}) {
     const stressTotals = userData[currentLevel].reduce((acc, snake) => {
@@ -43,6 +44,7 @@ export default function Results({userData, currentLevel, resetData}) {
 
     return (
         <StyledResults>
+            <Header />
             <div>
                 <h4>You completed {levelString.toLowerCase()}.</h4>
                 <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
