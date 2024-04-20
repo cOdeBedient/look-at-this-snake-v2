@@ -32,6 +32,5 @@ export const StyledCounter = styled.div`
             margin-bottom: 1px;
             padding-right: 2px;
         }
-
     }
 `

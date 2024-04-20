@@ -20,4 +20,10 @@ export const StyledError = styled.section`
         background-color: rgb(175, 205, 165);
         margin-bottom: 20px;
     }
+
+    @media screen and (max-width: 767px) {
+        canvas {
+            width: 90%;
+        }
+    }
 `

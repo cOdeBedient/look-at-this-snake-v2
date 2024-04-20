@@ -19,25 +19,25 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     function handleRunTestClick(event) {
         event.preventDefault()
         runTest()
-        setTimeout(() => {setTestHasRun(true)}, 3200)
+        setTimeout(() => {setTestHasRun(true)}, 3300)
     }
 
     function handleNextSnakeClick(event) {
         event.preventDefault()
-        updateUserData(displayedSnake, evalFormData)
         moveToNextSnake()
+        updateUserData(displayedSnake, evalFormData)
+        
     }
 
     function moveToNextSnake() {
-        advanceSnake()
         setTestHasRun(false)
+        advanceSnake()
         setEvalFormData({before: 0, after: 0})
     }
 
     return (
         snakeHidden === '' &&
         <StyledEvaluationForm>
-            
                 <div className="eval-form">
                     <label>Initial Anxiety Level (out of 10)
                         <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} disabled={testHasRun} />

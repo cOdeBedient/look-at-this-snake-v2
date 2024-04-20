@@ -10,8 +10,8 @@ export const StyledResults = styled.section`
     div {
         background-color: rgb(255, 255, 255, .2);
         padding: 10px 10px 10px 10px;
-        margin-top: 150px;
-        width: fit-content;
+        margin-top: 100px;
+        width: 800px;
         margin-left: 80px;
     }
 
@@ -24,5 +24,20 @@ export const StyledResults = styled.section`
         width: fit-content;
         color: white;
         padding: 3px 5px 3px 5px;
+    }
+
+    @media screen and (max-width: 950px) {
+        div {
+            width: 75vw;
+            margin-top: 80px;
+        }
+    }
+
+    @media screen and (max-width: 470px) {
+        div {
+            width: 75vw;
+            margin-left: 20px;
+            margin-top: 60px;
+        }
     }
 `

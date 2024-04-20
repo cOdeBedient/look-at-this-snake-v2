@@ -9,7 +9,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
-    const [ snakeCounter, setSnakeCounter ] = useState(0)
+    const [ snakeCounter, setSnakeCounter ] = useState(-1)
     const [ finished, setFinished ] = useState(false)
     const [ snakesWithPics, setSnakesWithPics ] = useState([])
     const [ puppy, setPuppy ] = useState('')
@@ -35,44 +35,11 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
 
 
     useEffect(() => {
-        if(snakesWithPics.length > 0) {
-            setDisplayedSnake(snakesWithPics[snakeCounter])
+        if(snakesWithPics.length > 0 && snakeCounter === -1) {
+            setDisplayedSnake(snakesWithPics[0])
+            setSnakeCounter(0)
         }
     })
-
-    // useEffect(() => {
-    //     document.addEventListener('keydown', handleKeyPress)
-    //     return () => {
-    //         document.removeEventListener('keydown', handleKeyPress);
-    //     };
-    //   }, [])
-
-    // useEffect(() => {
-    //     document.addEventListener('keyup', handleKeyUp)
-    //     return () => {
-    //         document.removeEventListener('keyup', handleKeyUp);
-    //     };
-    //   }, [])
-
-    // useEffect(() => {
-    //     if(panicMode) {
-    //         setImageTitle('Remember to Breathe') 
-    //     } else {
-    //         setImageTitle('Look at this Snake:')
-    //     }
-    // }, [panicMode])
-
-    // function handleKeyPress(event) {
-    //     if (event.key === 'b') {
-    //         setPanicMode(true)
-    //   }
-    // }
-
-    // function handleKeyUp(event) {
-    //     if (event.key === 'b') {
-    //         setPanicMode(false)
-    //   }
-    // }
 
     function flicker(ms) {
         setTimeout(() => {setPanicMode(prev => !prev)}, ms)
@@ -88,9 +55,10 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
 
     function advanceSnake(event) {
         if(snakeCounter < snakesWithPics.length - 1) {
-            setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
+            setPanicMode(false)
             setImageTitle('Look at this Snake: ')
+            setDisplayedSnake(snakesWithPics[snakeCounter + 1])
         } else {
             setFinished(true)
         }

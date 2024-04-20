@@ -76,7 +76,7 @@ export const StyledSnakeDisplay = styled.div`
         }
 
         .snake-photos-container {
-        align-items: center;
+        /* align-items: center; */
         width: 650px;
         }
     }
@@ -84,6 +84,7 @@ export const StyledSnakeDisplay = styled.div`
     @media screen and (max-width: 767px) {
         .snake-photos-container {
             flex-direction: column;
+            align-items: center;
             width: 100%;
         }
 
