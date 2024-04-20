@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import './SnakeDisplay.css'
-import Decompression from '../Decompression/Decompression'
+import { StyledSnakeDisplay } from './SnakeDisplay.styled'
+import Results from '../Results/Results'
 import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 import PropTypes from 'prop-types'
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 export default function SnakeDisplay({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     const [ panicMode, setPanicMode ] = useState(false)
-    const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin')
+    const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
     const [ snakeCounter, setSnakeCounter ] = useState(0)
     const [ finished, setFinished ] = useState(false)
     const [ snakesWithPics, setSnakesWithPics ] = useState([])
@@ -80,8 +80,8 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
 
     function runTest() {
         setImageTitle('processing...')
-        setTimeout(() => {setImageTitle('Look at this Snake: ')}, 3100)
-        for(var i=50; i<3150; i+=50) {
+        setTimeout(() => {setImageTitle('Look at this Dog: ')}, 3200)
+        for(var i=100; i<3150; i+=100) {
             flicker(i)
         }
     }
@@ -90,6 +90,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
         if(snakeCounter < snakesWithPics.length - 1) {
             setPanicMode(false)
             setSnakeCounter(prev => prev + 1)
+            setImageTitle('Look at this Snake: ')
         } else {
             setFinished(true)
         }
@@ -102,9 +103,9 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     }
 
     return (
-        <>
+        <StyledSnakeDisplay>
             {finished ?
-                <Decompression userData={userData} currentLevel={currentLevel} resetData={resetData} />
+                <Results userData={userData} currentLevel={currentLevel} resetData={resetData} />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
@@ -125,11 +126,12 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                             runTest={runTest}
                             displayedSnake={displayedSnake}
                             updateUserData={updateUserData}
+                            snakeCounter={snakeCounter}
                             />
                     </div> 
                 </section>
             }
-        </>
+        </StyledSnakeDisplay>
     )
 }
 
@@ -138,7 +140,6 @@ SnakeDisplay.propTypes = {
         name: PropTypes.string.isRequired,
         isVenemous: PropTypes.bool.isRequired,
         isAggressive: PropTypes.bool.isRequired,
-        image: PropTypes.string.isRequired,
         isFavorite: PropTypes.bool.isRequired
     })).isRequired
 }

@@ -1,9 +1,9 @@
-import './App.css';
 import { useState, useEffect } from 'react'
 import { getData } from '../apiCalls'
 import LandingPage from '../LandingPage/LandingPage'
 import Error from '../Error/Error'
 import Game from '../Game/Game'
+import Results from '../Results/Results'
 import { Route, Routes } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
@@ -89,6 +89,11 @@ function resetData() {
                                         userData={userData}
                                         currentLevel={currentLevel}
                                         resetData={resetData} />} />
+        <Route path='/results' element={<Results 
+                                          userData={userData}
+                                          currentLevel={currentLevel}
+                                          resetData={resetData}
+                                          />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

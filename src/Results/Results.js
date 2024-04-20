@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import './Decompression.css'
+import { StyledResults } from './Results.styled'
 import PropTypes from 'prop-types'
 
-export default function Decompression({userData, currentLevel, resetData}) {
+export default function Results({userData, currentLevel, resetData}) {
     const stressTotals = userData[currentLevel].reduce((acc, snake) => {
         acc.beforeAvg += snake.beforeTotal/10
         acc.afterAvg += snake.afterTotal/10
@@ -24,13 +24,13 @@ export default function Decompression({userData, currentLevel, resetData}) {
     let difference = stressTotals.beforeAvg - stressTotals.afterAvg
     if (difference < 3) {
         fortunateness = "Unfortunately"
-        benefit = "not very beneficial to you."
+        benefit = "not very beneficial to you. Most likely you have misused the test."
     } else if (difference < 6) {
         fortunateness = "Fortunately"
         benefit = "very beneficial to you."
     } else {
         fortunateness = "Fortunately"
-        benefit = "extremely beneficial to you! We will be celebrated by science for years to come!"
+        benefit = "extremely beneficial to you! LATSTLATP will be celebrated by science for years to come!"
     }
 
     let spacedString = currentLevel.split('l')
@@ -42,21 +42,23 @@ export default function Decompression({userData, currentLevel, resetData}) {
     }
 
     return (
-        <>
-            <h4>You completed {levelString.toLowerCase()}.</h4>
-            <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
-            <h4>{fortunateness}, this treatment was {benefit}</h4>
-            <h4>Would you like to continue with more processing?</h4>
-            <Link to='/' onClick={handleClick}>
-                <p className="back-button">return to homepage</p>
-            </Link>
-            {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
-        </>
+        <StyledResults>
+            <div>
+                <h4>You completed {levelString.toLowerCase()}.</h4>
+                <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
+                <h4>{fortunateness}, this treatment was {benefit}</h4>
+                <h4>Would you like to continue with more processing?</h4>
+                <Link to='/' onClick={handleClick}>
+                    <p className="back-button">return to homepage</p>
+                </Link>
+                {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
+            </div>
+        </StyledResults>
 
     )
 }
 
-Decompression.propTypes = {
+Results.propTypes = {
     userData: PropTypes.shape({
         Level1: PropTypes.array.isRequired,
         Level2: PropTypes.array.isRequired,

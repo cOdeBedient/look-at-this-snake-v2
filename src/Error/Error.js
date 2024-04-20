@@ -1,4 +1,4 @@
-import "./Error.css"
+import { StyledError } from "./Error.styled"
 
 export default function Error() {
     function runGame(){
@@ -147,10 +147,12 @@ export default function Error() {
 
 
     return (
-        <div className="error">
-            <p>We've experienced some technical difficulties.<br></br> Please enjoy this game of Snake while we work to resolve the issue.</p>
-            <canvas width="400" height="400" id="game"></canvas>
-            <button onClick={runGame}>start game</button>
-        </div>
+        <StyledError>
+            <div>
+                <p>SSSSsssorry. LOL. We've experienced some technical difficulties.<br></br> Please enjoy this game of Snake while we work to resolve the issue.</p>
+                <canvas width="400" height="400" id="game"></canvas>
+                <button onClick={runGame}>start game</button>
+            </div>
+        </StyledError>
     )
 }
