@@ -10,7 +10,7 @@ export default function LandingPage({ filterSnakes }) {
             <StyledLandingPage>
                 <Header />
                 <section>
-                    <h2>Look at this Snake then Look at this Puppy</h2>
+                    <h2>Look at This Snake Then Look at This Puppy</h2>
                     <h3>A phobic deprogramming tool designed by someone with no credentials</h3>
                     <LevelForm filterSnakes={filterSnakes} />
                 </section>

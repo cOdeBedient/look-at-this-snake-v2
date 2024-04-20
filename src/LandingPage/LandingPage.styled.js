@@ -18,7 +18,7 @@ export const StyledLandingPage = styled.div`
       background-color: grey;
       background-image: url(/assets/snake-dog.png);
       opacity: .03;
-      background-size: 55%;
+      background-size: 45%;
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -28,8 +28,8 @@ export const StyledLandingPage = styled.div`
       padding: 10px 10px 10px 10px;
       margin-top: 150px;
       width: fit-content;
-      margin-left: 100px;
-      margin-left: 100px;
+      margin-left: 80px;
+
     }
 
     h2 {
@@ -60,7 +60,7 @@ export const StyledLandingPage = styled.div`
       background-color: lightgrey;
       border: 2px solid black;
       width: fit-content;
-      margin-top: 30px;
+      /* margin-top: 30px; */
       padding: 4px 8px 4px 8px;
       /* border-radius: 4px; */
     }

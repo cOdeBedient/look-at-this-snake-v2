@@ -18,19 +18,19 @@ export default function LevelForm( { filterSnakes }) {
     return (
         <StyledLevelForm>
             <label>
-                <input name="level" type="radio" id="1" onChange={event => handleChange(event)} checked={formSelector === "1" ? true : false}></input>Level 1 | 
+                <input name="level" type="radio" id="1" onChange={event => handleChange(event)} tabIndex='1' checked={formSelector === "1" ? true : false}></input>Level 1 
             </label>
             <label>
-                <input name="level" type="radio" id="2" onChange={event => handleChange(event)} checked={formSelector === "2" ? true : false}></input>Level 2 | 
+                <input name="level" type="radio" id="2" onChange={event => handleChange(event)} tabIndex='2' checked={formSelector === "2" ? true : false}></input>Level 2 
             </label>
             <label>
-                <input name="level" type="radio" id="3" onChange={event => handleChange(event)} checked={formSelector === "3" ? true : false}></input>Level 3 | 
+                <input name="level" type="radio" id="3" onChange={event => handleChange(event)} tabIndex='3' checked={formSelector === "3" ? true : false}></input>Level 3 
             </label>
-            <label>
-                <input name="level" type="radio" id="4" onChange={event => handleChange(event)} checked={formSelector === "4" ? true : false}></input>Level 4 | 
+            <label id="last-label">
+                <input name="level" type="radio" id="4" onChange={event => handleChange(event)} tabIndex='4' checked={formSelector === "4" ? true : false}></input>Level 4 
             </label>
             <Link to='/game' onClick={handleClick}>
-                <p>breathe. . . then click this button to begin</p>
+                <p>click here to begin</p>
             </Link>
         </StyledLevelForm>
     )

@@ -12,9 +12,9 @@ export const StyledHeader = styled.header`
     }
 
     img {
-        height: 33px;
-        width: 34px;
+        height: 30px;
+        width: 31px;
         filter: invert(100%);
-        margin: 5px 13px 5px 20px;
+        margin: 5px 10px 5px 20px;
     }
 `

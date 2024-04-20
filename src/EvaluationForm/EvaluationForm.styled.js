@@ -5,6 +5,7 @@ export const StyledEvaluationForm = styled.form`
     flex-direction: column;
     margin-left: 15px;
     width: 150px;
+    text-align: center;
 
     label {
         margin-top: 60px;
@@ -12,5 +13,7 @@ export const StyledEvaluationForm = styled.form`
 
     input {
         margin-top: 10px;
+        width: 140px;
+        text-align: center;
     }
 `
