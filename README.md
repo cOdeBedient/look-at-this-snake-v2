@@ -44,6 +44,7 @@ I plan to:
 
 
 ### Preview
+![LATSTLATP](https://github.com/cOdeBedient/look-at-this-snake/assets/144140381/74aa48e1-4846-43e7-9eba-433813a6007e)
 
 
 
