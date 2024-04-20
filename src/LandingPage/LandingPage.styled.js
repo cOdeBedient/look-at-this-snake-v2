@@ -29,7 +29,6 @@ export const StyledLandingPage = styled.div`
       margin-top: 150px;
       width: fit-content;
       margin-left: 80px;
-
     }
 
     h2 {
