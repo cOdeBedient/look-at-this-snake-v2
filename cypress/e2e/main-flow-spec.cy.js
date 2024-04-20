@@ -2,49 +2,49 @@ describe('LATSTLATP', () => {
   it('should arrive at landing page and validate all elements', () => {
 
     cy.fixture('snakes.json').then(snakes => {
-      cy.intercept('GET', 'http://localhost:3000/api/v1/snakes/', {
+      cy.intercept('GET', 'https://look-at-this-snake-api.onrender.com/api/v1/snakes', {
         status: 201,
         body: snakes
       })
     })
 
     cy.fixture('zones.json').then(zones => {
-      cy.intercept('GET', 'http://localhost:3000/api/v1/noSnakeZones/', {
+      cy.intercept('GET', 'https://look-at-this-snake-api.onrender.com/api/v1/noSnakeZones', {
         status: 200,
         body: zones
       })
     })
 
-    cy.visit('http://localhost:3001/')
-      .get('.landing').contains('h1', "Look at this Snake then Look at this Puppy")
-      .get('.landing').contains('h2', "A phobic deprogramming tool designed by someone with no credentials")
-      .get('.level-form').contains('label', 'Level 1 |')
-      .get('.level-form').contains('label', 'Level 2 |')
-      .get('.level-form').contains('label', 'Level 3 |')
-      .get('.level-form').contains('label', 'Level 4 |')
-      .get('a').contains("p", "breathe. . . then click this button to begin")
+    cy.visit('http://localhost:3000/')
+      .get('.sc-beySPh > :nth-child(2)').contains('h2', "Look at This Snake Then Look at This Puppy")
+      .get('.sc-beySPh > :nth-child(2)').contains('h3', "A phobic deprogramming tool designed by someone with no credentials")
+      .get('.sc-guDLey > div').contains('label', 'Level 1')
+      .get('.sc-guDLey > div').contains('label', 'Level 2')
+      .get('.sc-guDLey > div').contains('label', 'Level 3')
+      .get('.sc-guDLey > div').contains('label', 'Level 4')
+      .get('a').contains("p", "click here to begin")
   })
 
   it('should navigate to game page, validate all elements, and play the game', () => {
 
     cy.fixture('snakes.json').then(snakes => {
-      cy.intercept('GET', 'http://localhost:3000/api/v1/snakes/', {
+      cy.intercept('GET', 'https://look-at-this-snake-api.onrender.com/api/v1/snakes', {
         status: 201,
         body: snakes
       })
     })
 
     cy.fixture('zones.json').then(zones => {
-      cy.intercept('GET', 'http://localhost:3000/api/v1/noSnakeZones/', {
+      cy.intercept('GET', 'https://look-at-this-snake-api.onrender.com/api/v1/noSnakeZones', {
         status: 200,
         body: zones
       })
     })
 
-    cy.visit('http://localhost:3001/')
-    .get('a').contains("p", "breathe. . . then click this button to begin")
+    cy.visit('http://localhost:3000/')
+    .get('a').contains("p", "click here to begin")
     .click()
-    .url().should('eq', 'http://localhost:3001/game')
+    .url().should('eq', 'http://localhost:3000/game')
     .get('header').contains('h1', 'LATSTLATP')
     .get('.snake-display').contains('p', "Take 5 deep breaths, and then click the box to begin")
     .get('.boxes').children().should("have.length", 3)
@@ -100,6 +100,6 @@ describe('LATSTLATP', () => {
     .get('h4').contains('Would you like to continue with more processing?')
     .get('.back-button').contains('return to homepage')
     .click()
-    .url().should('eq', 'http://localhost:3001/')
+    .url().should('eq', 'http://localhost:3000/')
   })
 })
