@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Look at This Snake
+**Overview:**
+A phobic deprogramming tool designed by someone with no credentials, "Look at This Snake" is a hybrid concept piece and React skills showcase.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Check out the beta version here!](https://look-at-this-snake.vercel.app/)
 
-## Available Scripts
+###  Installation
+- `fork` this repo and clone it to your local machine
+- `cd` into the repo
+- `npm install` dependencies
+- `npm start` to be automatically redirected to the site
 
-In the project directory, you can run:
 
-### `npm start`
+### Additional Downloads
+```
+npm install styled-components
+npm install react-router-dom
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Explore the Cypress Test Suite
+```
+npm run cypress:open
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Technologies used
+![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge) ![React Router Badge](https://img.shields.io/badge/React%20Router-CA4245?logo=reactrouter&logoColor=fff&style=for-the-badge) ![JavaScript Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=for-the-badge) ![CSS3 Badge](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff&style=for-the-badge) ![styled-components Badge](https://img.shields.io/badge/styled--components-DB7093?logo=styledcomponents&logoColor=fff&style=for-the-badge)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Wins
+I was pretty psyched to deepen my understanding of data flows in React on this project. This exploration not only streamlined my code but also helped me to solve some complex challenges creatively. Managing a responsive app alongside a robust Cypress test suite was incredibly satisfying, and was particularly rewarding given the app's game-like functionality and the multitude of user paths to explore.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Challenges
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Testing proved to be more intricate than expected due to the variety of user paths within the application. Additionally, implementing responsive design posed its own set of hurdles, particularly when integrating styled components, to maintain consistency across different screen sizes. Managing state across numerous components was another significant challenge, necessitating careful implementation to maintain a cohesive UI and UX.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Up Next 
+I plan to:
+- introduce animations
+- refine the game levels to make a more interesting and dynamic experience
+- build out the results page
+- add more character and storytelling components to the main page
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Preview
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## App by: 
+- [Adam Bedient](https://github.com/cOdeBedient)
