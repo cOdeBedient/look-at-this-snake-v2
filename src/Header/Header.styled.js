@@ -17,4 +17,18 @@ export const StyledHeader = styled.header`
         filter: invert(100%);
         margin: 5px 10px 5px 20px;
     }
+
+    @media screen and (max-width: 767px) {
+        padding-left: 0px;
+
+        h1 {
+            font-size: 1.3em;
+        }
+
+        img {
+            height: 24px;
+            width: 25px;
+            margin: 3px 5px 3px 20px;
+        }
+    }
 `

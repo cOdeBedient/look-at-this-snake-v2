@@ -6,7 +6,6 @@ export default function LandingPage({ filterSnakes }) {
 
     return (
         <>
-            
             <StyledLandingPage>
                 <Header />
                 <section>
