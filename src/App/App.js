@@ -7,7 +7,6 @@ import Results from '../Results/Results'
 import { Route, Routes } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-
 function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
@@ -23,7 +22,6 @@ function handleError(error) {
 useEffect(() => {
   getData()
   .then(([zones, snakes]) => {
-    console.log("snakes", snakes)
     const preppedSnakes = snakes.snakes.map((snake) => {
       return {
         ...snake,
@@ -97,7 +95,6 @@ function resetData() {
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>
-      
     </>
   );
 }

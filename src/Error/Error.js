@@ -152,7 +152,8 @@ export default function Error() {
                 <p>SSSSsssorry. LOL. We've experienced some technical difficulties.<br></br> Please enjoy this game of Snake while we work to resolve the issue.</p>
                 <canvas width="400" height="400" id="game"></canvas>
                 <button onClick={runGame}>start game</button>
-            </div>
+                <p className="attribute">snake game code courtesy of Steven Lambert: https://gist.github.com/straker</p>
+            </div>      
         </StyledError>
     )
 }

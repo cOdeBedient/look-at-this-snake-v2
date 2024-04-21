@@ -21,6 +21,11 @@ export const StyledError = styled.section`
         margin-bottom: 20px;
     }
 
+    .attribute {
+        font-size: .7em;
+        margin-left: 15px;
+    }
+
     @media screen and (max-width: 767px) {
         canvas {
             width: 90%;
