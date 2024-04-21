@@ -29,7 +29,7 @@ export const StyledHeader = styled.header`
         img {
             height: 27px;
             width: 28px;
-            margin: 8px 5px 1px 20px;
+            margin: 8px 5px 8px 20px;
         }
     }
 

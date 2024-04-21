@@ -86,7 +86,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                                 displayedSnake.image &&
                                 <>
                                     <img className={`${snakeHidden}`} src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
-                                    <div onClick={clickBox} className={`start-box ${boxHidden}`}></div>
+                                    <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
                                 </>
                             }
                         </div>

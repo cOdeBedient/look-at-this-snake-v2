@@ -25,6 +25,8 @@ export const StyledSnakeDisplay = styled.div`
         background-repeat: no-repeat;
         background-position: center;
         filter: invert(25%);
+        cursor: pointer;
+
     }
 
     .snake-display {
@@ -90,13 +92,13 @@ export const StyledSnakeDisplay = styled.div`
 
         img {
             width: 75vw;
-            height: 40vw;
+            height: 45vw;
             padding: 10px;
         }
 
         .start-box {
             width: 75vw;
-            height: 40vw;
+            height: 45vw;
             background-size: 35%;
         }
 
