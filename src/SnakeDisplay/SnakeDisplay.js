@@ -5,8 +5,14 @@ import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 import PropTypes from 'prop-types'
 
+// const STORED_SNAKE = JSON.stringify({})
+// sessionStorage.setItem(STORED_SNAKE, JSON.stringify({}));
+// const STORED_SNAKES_W_PICS = []
+// sessionStorage.setItem(STORED_SNAKES_W_PICS, []);
+
 export default function SnakeDisplay({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
+    // const [ displayedSnake, setDisplayedSnake ] = useState(sessionStorage.getItem(STORED_SNAKE))
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
     const [ snakeCounter, setSnakeCounter ] = useState(-1)
@@ -15,6 +21,19 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
+
+    useEffect(() => {
+        console.log(sessionStorage.getItem("STORED_SNAKES"))
+        if (!sessionStorage.getItem("STORED_SNAKES")) {
+            sessionStorage.setItem("STORED_SNAKES", JSON.stringify(currentSnakes));
+        } else {
+            console.log('here')
+            currentSnakes = JSON.parse(sessionStorage.getItem("STORED_SNAKES"))
+            console.log('currentSnakes here', currentSnakes)
+        }
+    }, []);
+
+    console.log("currentSnakes", currentSnakes)
 
 
     useEffect(() => {
@@ -32,6 +51,15 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
        setPuppy(puppyPic)
        setSnakesWithPics(updatedPicSnakes)
     }, [currentSnakes])
+
+    // useEffect(() => {
+    //     sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
+    // }, [displayedSnake]);
+
+    // console.log(sessionStorage.getItem("STORED_SNAKE"))
+
+
+    
 
 
     useEffect(() => {
