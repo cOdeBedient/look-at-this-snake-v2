@@ -5,7 +5,7 @@ A phobic deprogramming tool designed by someone with no credentials, "Look at Th
 [Check out the beta version here!](https://look-at-this-snake.vercel.app/)
 
 ###  Installation
-- `fork` this repo and clone it to your local machine
+- `clone repo to your local machine
 - `cd` into the repo
 - `npm install` dependencies
 - `npm start` to be automatically redirected to the site
@@ -19,6 +19,7 @@ npm install react-router-dom
 
 ### Explore the Cypress Test Suite
 ```
+npm start
 npm run cypress:open
 ```
 
