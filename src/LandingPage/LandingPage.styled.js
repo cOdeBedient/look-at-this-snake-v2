@@ -6,6 +6,9 @@ export const StyledLandingPage = styled.div`
   /* background-size: 15%; */
   position: absolute;
   width: 100vw;
+  background-image: url(/assets/snake-dog.png);
+  background-size: 50%;
+
 
   ::before {
     content: "";
@@ -15,20 +18,22 @@ export const StyledLandingPage = styled.div`
     width: 100vw;
     height:100vh;
     z-index: -1;
-    background-color: grey;
-    background-image: url(/assets/snake-dog.png);
-    opacity: .03;
-    background-size: 45%;
+    /* background-image: linear-gradient(to left, #434343 0%, white 100%); */
+    background-color: lightgrey;
+    opacity: .1;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    
   }
 
   section {
-    background-color: rgb(255, 255, 255, .55);
+    background-color: rgb(255, 255, 255, .85);
     padding: 10px 10px 10px 10px;
     margin-top: 150px;
     width: fit-content;
     margin-left: 80px;
+    border-radius: 10px;
   }
 
   h2 {
@@ -55,13 +60,13 @@ export const StyledLandingPage = styled.div`
   }
 
   p {
-    color: black;
-    background-color: lightgrey;
+    color: white;
+    background-color: black;
     border: 2px solid black;
     width: fit-content;
     /* margin-top: 30px; */
     padding: 4px 8px 4px 8px;
-    /* border-radius: 4px; */
+    border-radius: 4px;
   }
 
   @media screen and (max-width: 1024px) {

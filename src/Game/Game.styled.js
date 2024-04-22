@@ -16,5 +16,7 @@ export const StyledGame = styled.div`
         align-items: center;
         background-image: url(/assets/tiles.png);
         background-size: repeat;
+        /* background-image: url(/assets/snake-dog.png);
+        background-size: 2%; */
     }
 `

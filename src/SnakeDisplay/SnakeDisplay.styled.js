@@ -19,14 +19,13 @@ export const StyledSnakeDisplay = styled.div`
         width: 600px;
         padding: 10px;
         border: 2px solid black;
-        background-color: grey;
+        background-color: rgb(180, 180, 180, 1);
         background-image: url(/assets/snake-dog.png);
-        background-size: 35%;
+        background-size: 50%;
         background-repeat: no-repeat;
         background-position: center;
-        filter: invert(25%);
+        filter: invert(0%);
         cursor: pointer;
-
     }
 
     .snake-display {

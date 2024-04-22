@@ -28,6 +28,7 @@ export const StyledLevelForm = styled.section`
         padding-right: 15px;
         border-right: 1px solid black;
         margin-left: 15px;
+        font-weight: 500;
     }
 
     #last-label {
