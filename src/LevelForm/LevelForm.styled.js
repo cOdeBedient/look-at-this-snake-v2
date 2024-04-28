@@ -2,21 +2,35 @@ import styled from 'styled-components'
 
 export const StyledLevelForm = styled.section`
     color: black;
-    background-color: transparent !important;
     margin-top: 0 !important;
     margin-left: 0 !important;
+    margin-right: 0 !important;
     padding-left: 0 !important;
+    padding-right: 0 !important;
     display: flex;
     align-items: center;
+    width: 100% !important;
+    flex-direction: column;
+    margin-right: 0 !important;
+    border: none !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.0) !important;
+    
+
 
     div {
+        padding: 10px 10px 10px 10px;
+        background-color: yellow !important;
         display: flex;
+        justify-content: space-evenly;
+        border-radius: 15px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     p {
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-left: 70px;
+        margin: 0;
+        margin-top: 25px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     :hover {
@@ -49,9 +63,7 @@ export const StyledLevelForm = styled.section`
     }
 
     @media screen and (max-width: 767px) {
-        flex-direction: column;
-        width: 100% !important;
-        margin-right: 0 !important;
+
 
         div {
             justify-content: space-evenly;
