@@ -35,7 +35,7 @@ export const StyledLandingPage = styled.div`
     /* border: 5px solid yellow; */
     padding: 10px 10px 10px 10px;
     margin-top: 150px;
-    width: 400px;
+    width: 500px;
     margin-left: 80px;
     border-radius: 10px;
     display: flex;
@@ -55,20 +55,20 @@ export const StyledLandingPage = styled.div`
     margin-bottom: 10px;
     margin-top: 0;
     width: fit-content;
-    color: yellow;
+    color: white;
   }
 
   h3 {
-    font-size: 1.15em;
+    font-size: 1.35em;
     font-style: italic;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     width: fit-content;
     padding-bottom: 10px;
     padding-top: 10px;
     /* border-bottom: 3px solid white;
     border-top: 3px solid white; */
-    color: black;
+    color: yellow;
   }
 
   a {
