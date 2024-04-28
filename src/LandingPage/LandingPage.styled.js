@@ -98,6 +98,7 @@ export const StyledLandingPage = styled.div`
     background-color: red;
     border-radius: 15px;
     margin-left: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     /* margin-top: 20px; */
 
     .puppy-bio {
