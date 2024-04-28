@@ -2,21 +2,35 @@ import styled from 'styled-components'
 
 export const StyledLevelForm = styled.section`
     color: black;
-    background-color: transparent !important;
     margin-top: 0 !important;
     margin-left: 0 !important;
-    padding-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
     display: flex;
     align-items: center;
-
+    width: 100% !important;
+    flex-direction: column;
+    border: none !important;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.0) !important;
+    
     div {
-        display: flex;
+        padding: 10px 10px 10px 10px;  
+        /* display: flex; */
+        justify-content: space-evenly;
+        width: 100%;
+        padding-top: 0;
     }
 
-    p {
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-left: 70px;
+    button {
+        margin: 0;
+        margin-bottom: 10px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        padding: 5px 10px 5px 10px;
+        border: none;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: 15px;
     }
 
     :hover {
@@ -25,14 +39,14 @@ export const StyledLevelForm = styled.section`
 
     label {
         display: flex;
-        padding-right: 15px;
-        border-right: 1px solid black;
-        margin-left: 15px;
+        align-items: center;
+        padding: 10px 15px 10px 15px;
+        /* border-right: 1px solid black; */
+        margin: 10px;
         font-weight: 500;
-    }
-
-    #last-label {
-        border: none !important;
+        background-color: yellow !important;
+        border-radius: 15px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     @media screen and (max-width: 1024px) {
@@ -49,9 +63,7 @@ export const StyledLevelForm = styled.section`
     }
 
     @media screen and (max-width: 767px) {
-        flex-direction: column;
-        width: 100% !important;
-        margin-right: 0 !important;
+
 
         div {
             justify-content: space-evenly;

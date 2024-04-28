@@ -32,7 +32,7 @@ export default function LevelForm( { filterSnakes }) {
                 </label>
             </div>
             <Link to='/game' onClick={handleClick}>
-                <p>click here to begin</p>
+                <button>confront your fears!</button>
             </Link>
         </StyledLevelForm>
     )

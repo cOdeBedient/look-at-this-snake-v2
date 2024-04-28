@@ -1,11 +1,17 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.header`     
-    background-color: black;
+    background-color: red;
     padding: 1px 0px 1px 10px;
     color: white;
     display: flex;
     align-items: center;
+    font-family: "Kablammo", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 0;
 
     h1 {
         margin: 7px 0px 7px 0px;

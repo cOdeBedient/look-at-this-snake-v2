@@ -3,12 +3,15 @@ import styled from 'styled-components'
 export const StyledLandingPage = styled.div`
   height: 100vh;
   /* background-image: url(/assets/puppy-wide-blue-background.jpg); */
-  /* background-size: 15%; */
+  /* background-size: cover; */
   position: absolute;
   width: 100vw;
-  background-image: url(/assets/snake-dog.png);
-  background-size: 50%;
-
+  background-image: url(/assets/snake-skin-background.jpg);
+  /* background-size: 10%; */
+  font-family: "Anybody", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-align: center;
 
   ::before {
     content: "";
@@ -19,40 +22,58 @@ export const StyledLandingPage = styled.div`
     height:100vh;
     z-index: -1;
     /* background-image: linear-gradient(to left, #434343 0%, white 100%); */
-    background-color: lightgrey;
-    opacity: .1;
+    /* background-color: red; */
+    /* opacity: .1; */
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     
   }
 
-  section {
-    background-color: rgb(255, 255, 255, .85);
-    padding: 10px 10px 10px 10px;
+  .landing-container {
+    display: flex;
+    align-items: center;
     margin-top: 150px;
-    width: fit-content;
+  }
+
+  section {
+    background-color: red;
+    /* border: 5px solid yellow; */
+    padding: 10px 10px 10px 10px;
+    width: 500px;
     margin-left: 80px;
-    border-radius: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
 
   h2 {
+    font-family: "Kablammo", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "MORF" 0;
     font-size: 1.95em;
     margin-bottom: 10px;
     margin-top: 0;
     width: fit-content;
+    color: white;
   }
 
   h3 {
-    font-size: 1.15em;
+    font-size: 1.35em;
     font-style: italic;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     width: fit-content;
     padding-bottom: 10px;
     padding-top: 10px;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    /* border-bottom: 3px solid white;
+    border-top: 3px solid white; */
+    color: yellow;
   }
 
   a {
@@ -67,6 +88,36 @@ export const StyledLandingPage = styled.div`
     /* margin-top: 30px; */
     padding: 4px 8px 4px 8px;
     border-radius: 4px;
+  }
+
+  .puppy-bio-container {
+    width: 200px;
+    height: 100%;
+    /* height: fit-content; */
+    padding: 10px 10px 10px 10px;
+    background-color: red;
+    border-radius: 15px;
+    margin-left: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    /* margin-top: 20px; */
+
+    .puppy-bio {
+      color: black;
+      background-color: white;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-weight: bolder;
+    }
+
+    img {
+      width: 80%;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 3px solid white;
+    }
   }
 
   @media screen and (max-width: 1024px) {
