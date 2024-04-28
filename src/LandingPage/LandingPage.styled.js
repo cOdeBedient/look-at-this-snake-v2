@@ -30,14 +30,19 @@ export const StyledLandingPage = styled.div`
     
   }
 
+  .landing-container {
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+  }
+
   section {
     background-color: red;
     /* border: 5px solid yellow; */
     padding: 10px 10px 10px 10px;
-    margin-top: 150px;
     width: 500px;
     margin-left: 80px;
-    border-radius: 10px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,6 +88,35 @@ export const StyledLandingPage = styled.div`
     /* margin-top: 30px; */
     padding: 4px 8px 4px 8px;
     border-radius: 4px;
+  }
+
+  .puppy-bio-container {
+    width: 200px;
+    height: 100%;
+    /* height: fit-content; */
+    padding: 10px 10px 10px 10px;
+    background-color: red;
+    border-radius: 15px;
+    margin-left: 20px;
+    /* margin-top: 20px; */
+
+    .puppy-bio {
+      color: black;
+      background-color: white;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-weight: bolder;
+    }
+
+    img {
+      width: 80%;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      border: 3px solid white;
+    }
   }
 
   @media screen and (max-width: 1024px) {
