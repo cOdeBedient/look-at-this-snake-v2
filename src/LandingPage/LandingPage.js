@@ -2,7 +2,7 @@ import { StyledLandingPage } from './LandingPage.styled'
 import LevelForm from '../LevelForm/LevelForm'
 import Header from '../Header/Header'
 
-export default function LandingPage({ filterSnakes }) {
+export default function LandingPage({getLevel}) {
 
     return (
         <>
@@ -12,7 +12,7 @@ export default function LandingPage({ filterSnakes }) {
                     <section>
                         <h2>Look at This Snake Then Look at This Puppy</h2>
                         <h3>Just imagine puppies!!!</h3>
-                        <LevelForm filterSnakes={filterSnakes} />
+                        <LevelForm getLevel={getLevel} />
                     </section>
                     <div className="puppy-bio-container">
                         <img src='/assets/cute-doodle-crop.jpg' alt="cute puppy" />

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 // const STORED_SNAKES_W_PICS = []
 // sessionStorage.setItem(STORED_SNAKES_W_PICS, []);
 
-export default function SnakeDisplay({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
+export default function SnakeDisplay({ snakes, currentLevel }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     // const [ displayedSnake, setDisplayedSnake ] = useState(sessionStorage.getItem(STORED_SNAKE))
     const [ panicMode, setPanicMode ] = useState(false)
@@ -21,6 +21,51 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
+    const [currentSnakes, setCurrentSnakes] = useState([])
+    const [userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+
+
+    useEffect(() => {
+        filterSnakes(currentLevel)
+    }, [currentLevel])
+
+    function filterSnakes(level) {
+        let snakeSet;
+        if (currentLevel === 'Level1') {
+          snakeSet = snakes.filter((snake) => {
+            return !snake.isVenemous && !snake.isAggressive
+          })
+        } else if (currentLevel === 'Level2') {
+          snakeSet = snakes.filter((snake) => {
+            return !snake.isVenemous && snake.isAggressive
+          })
+        } else if (currentLevel === 'Level3') {
+          snakeSet = snakes.filter((snake) => {
+            return snake.isVenemous && !snake.isAggressive
+          })
+        } else if (currentLevel === 'Level4') {
+          snakeSet = snakes.filter((snake) => {
+            return snake.isVenemous && snake.isAggressive
+          })
+        }
+      
+        snakeSet[0].isDisplayed = true
+        setCurrentSnakes(snakeSet)
+      }
+      
+      function updateUserData(snake, data) {
+        const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
+        const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
+      
+        setUserData(updatedUser)
+      }
+      
+      function resetData() {
+        setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+        setCurrentSnakes([])
+        setCurrentLevel('')
+      }
+
 
     useEffect(() => {
         console.log(sessionStorage.getItem("STORED_SNAKES"))
@@ -101,7 +146,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     return (
         <StyledSnakeDisplay>
             {finished ?
-                <Results userData={userData} currentLevel={currentLevel} resetData={resetData} />
+                <Results userData={userData} currentLevel={currentLevel} resetData={resetData}  />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export default function LevelForm( { filterSnakes }) {
+export default function LevelForm( { getLevel }) {
     const [formSelector, setFormSelector] = useState('1')
 
 
@@ -12,7 +12,7 @@ export default function LevelForm( { filterSnakes }) {
     }
 
     function handleClick() {
-        filterSnakes(formSelector)
+        getLevel(formSelector)
     }
 
     return (
