@@ -39,5 +39,5 @@ export default function LevelForm( { getLevel }) {
 }
 
 LevelForm.propTypes = {
-    filterSnakes: PropTypes.func.isRequired
+    getLevel: PropTypes.func.isRequired
 }

@@ -3,10 +3,26 @@ import { StyledResults } from './Results.styled'
 import PropTypes from 'prop-types'
 import Header from '../Header/Header'
 
-export default function Results({userData, currentLevel, resetData}) {
-    console.log('currentLevel', currentLevel)
+export default function Results({userData, currentLevel, resetUserData}) {
+    console.log('userData', userData)
+    let retrievedUserData
+    let retrievedLevel
+    
+    console.log("ss", sessionStorage.getItem("STORED_USER_DATA"))
 
-    const stressTotals = userData[currentLevel].reduce((acc, snake) => {
+    if (!sessionStorage.getItem("STORED_USER_DATA")) {
+        sessionStorage.setItem("STORED_USER_DATA", JSON.stringify(userData))
+        sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel))
+        retrievedUserData = userData
+        retrievedLevel = currentLevel
+    } else {
+        retrievedUserData = (JSON.parse(sessionStorage.getItem("STORED_USER_DATA")))
+        retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
+    }
+
+console.log('retrievedLevel', retrievedLevel)
+
+    const stressTotals = retrievedUserData[retrievedLevel].reduce((acc, snake) => {
         acc.beforeAvg += snake.beforeTotal/10
         acc.afterAvg += snake.afterTotal/10
 
@@ -36,12 +52,13 @@ export default function Results({userData, currentLevel, resetData}) {
         benefit = "extremely beneficial to you! LATSTLATP will be celebrated by science for years to come!"
     }
 
-    let spacedString = currentLevel.split('l')
+    let spacedString = retrievedLevel.split('l')
     let levelString = `${spacedString[0]}l ${spacedString[1]}`
 
 
-    function handleClick() {
-        resetData()
+    function resetStorage() {
+        sessionStorage.removeItem("STORED_USER_DATA")
+        sessionStorage.removeItem("STORED_LEVEL")
     }
 
     return (
@@ -52,13 +69,13 @@ export default function Results({userData, currentLevel, resetData}) {
                 <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
                 <h4>{fortunateness}, this treatment was {benefit}</h4>
                 <h4>Would you like to continue with more processing?</h4>
-                <Link to='/' onClick={handleClick}>
-                    <p className="back-button">return to homepage</p>
+                <Link to='/'>
+                    <button className="back-button" onClick={resetStorage}>return to homepage</button>
                 </Link>
                 {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
             </div>
         </StyledResults>
-
+        
     )
 }
 
@@ -69,7 +86,5 @@ Results.propTypes = {
         Level3: PropTypes.array.isRequired,
         Level4: PropTypes.array.isRequired
     }).isRequired,
-    currentLevel: PropTypes.string.isRequired,
-    resetData: PropTypes.func.isRequired,
-    
+    currentLevel: PropTypes.string.isRequired, 
 }
