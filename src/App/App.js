@@ -57,7 +57,7 @@ console.log({snakes})
       <Routes>
         <Route path='/' element={<LandingPage getLevel={getLevel}/>} />
         <Route path='/game' element={<Game snakes={snakes} currentLevel={currentLevel} userData={userData} updateUserData={updateUserData} resetUserData={resetUserData}/>} />
-        <Route path='/results' element={<Results userData={userData} currentLevel={currentLevel} />} />
+        <Route path='/results' element={<Results userData={userData} currentLevel={currentLevel} resetUserData={resetUserData} />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

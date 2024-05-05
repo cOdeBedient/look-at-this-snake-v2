@@ -64,7 +64,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
       }
       
       function resetData() {
-        resetUserData()
+        // resetUserData()
         setCurrentSnakes([])
       }
 
@@ -79,8 +79,8 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         if(currentSnakes) {
             if(currentSnakes.length > 0 && snakeCounter === -1) {
                 //switch these back to zero
-                setDisplayedSnake(currentSnakes[7])
-                setSnakeCounter(7)
+                setDisplayedSnake(currentSnakes[8])
+                setSnakeCounter(8)
             }
         }
     })
