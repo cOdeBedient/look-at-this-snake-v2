@@ -17,40 +17,44 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
     const [ snakeCounter, setSnakeCounter ] = useState(-1)
     const [ finished, setFinished ] = useState(false)
-    const [ snakesWithPics, setSnakesWithPics ] = useState([])
-    const [ puppy, setPuppy ] = useState('')
+    // const [ snakesWithPics, setSnakesWithPics ] = useState([])
+    // const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
-    const [currentSnakes, setCurrentSnakes] = useState([])
-    const [userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+    const [ currentSnakes, setCurrentSnakes] = useState([])
+    const [ userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
 
 
     useEffect(() => {
+        console.log('currentLevel', currentLevel)
+        resetData()
         filterSnakes(currentLevel)
-    }, [currentLevel])
+    }, [snakes])
 
     function filterSnakes(level) {
-        let snakeSet;
-        if (currentLevel === 'Level1') {
-          snakeSet = snakes.filter((snake) => {
-            return !snake.isVenemous && !snake.isAggressive
-          })
-        } else if (currentLevel === 'Level2') {
-          snakeSet = snakes.filter((snake) => {
-            return !snake.isVenemous && snake.isAggressive
-          })
-        } else if (currentLevel === 'Level3') {
-          snakeSet = snakes.filter((snake) => {
-            return snake.isVenemous && !snake.isAggressive
-          })
-        } else if (currentLevel === 'Level4') {
-          snakeSet = snakes.filter((snake) => {
-            return snake.isVenemous && snake.isAggressive
-          })
+        if(snakes.length > 0) {
+            let snakeSet;
+            if (level === 'Level1') {
+                snakeSet = snakes.filter((snake) => {
+                    return !snake.isVenemous && !snake.isAggressive
+                })
+            } else if (level === 'Level2') {
+                snakeSet = snakes.filter((snake) => {
+                    return !snake.isVenemous && snake.isAggressive
+                })
+            } else if (level === 'Level3') {
+                snakeSet = snakes.filter((snake) => {
+                    return snake.isVenemous && !snake.isAggressive
+                })
+            } else if (level === 'Level4') {
+                snakeSet = snakes.filter((snake) => {
+                    return snake.isVenemous && snake.isAggressive
+                })
+            }
+        
+            snakeSet[0].isDisplayed = true
+            setCurrentSnakes(snakeSet)
         }
-      
-        snakeSet[0].isDisplayed = true
-        setCurrentSnakes(snakeSet)
       }
       
       function updateUserData(snake, data) {
@@ -63,39 +67,38 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
       function resetData() {
         setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
         setCurrentSnakes([])
-        setCurrentLevel('')
       }
 
 
-    useEffect(() => {
-        console.log(sessionStorage.getItem("STORED_SNAKES"))
-        if (!sessionStorage.getItem("STORED_SNAKES")) {
-            sessionStorage.setItem("STORED_SNAKES", JSON.stringify(currentSnakes));
-        } else {
-            console.log('here')
-            currentSnakes = JSON.parse(sessionStorage.getItem("STORED_SNAKES"))
-            console.log('currentSnakes here', currentSnakes)
-        }
-    }, []);
+    // useEffect(() => {
+    //     console.log("session stored snakes", sessionStorage.getItem("STORED_SNAKES"))
+    //     if (currentSnakes.length > 0 && !sessionStorage.getItem("STORED_SNAKES")) {
+    //         sessionStorage.setItem("STORED_SNAKES", JSON.stringify(currentSnakes));
+    //     } else {
+    //         console.log('here')
+    //         setCurrentSnakes(JSON.parse(sessionStorage.getItem("STORED_SNAKES")))
+    //         console.log('currentSnakes here', currentSnakes)
+    //     }
+    // }, []);
 
-    console.log("currentSnakes", currentSnakes)
+    // console.log("currentSnakes", currentSnakes)
 
 
-    useEffect(() => {
-        const updatedPicSnakes = currentSnakes.map((snake) => {
-            const snakePic = new Image()
-            snakePic.src = snake.image
-            snake.image = snakePic
+    // useEffect(() => {
+    //     const updatedPicSnakes = currentSnakes.map((snake) => {
+    //         const snakePic = new Image()
+    //         snakePic.src = snake.image
+    //         snake.image = snakePic
 
-            return snake
-       })
+    //         return snake
+    //    })
        
-       const puppyPic = new Image()
-       puppyPic.src = '/assets/cute-doodle.jpg'
+    //    const puppyPic = new Image()
+    //    puppyPic.src = '/assets/cute-doodle.jpg'
 
-       setPuppy(puppyPic)
-       setSnakesWithPics(updatedPicSnakes)
-    }, [currentSnakes])
+    //    setPuppy(puppyPic)
+    //    setSnakesWithPics(updatedPicSnakes)
+    // }, [currentSnakes])
 
     // useEffect(() => {
     //     sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
@@ -108,10 +111,16 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
 
 
     useEffect(() => {
-        if(snakesWithPics.length > 0 && snakeCounter === -1) {
-            setDisplayedSnake(snakesWithPics[0])
-            setSnakeCounter(0)
-        }
+        console.log('made it once')
+        if(currentSnakes) {
+            if(currentSnakes.length > 0 && snakeCounter === -1) {
+                console.log('made it twice')
+                console.log('current Snake inside', currentSnakes)
+                console.log('displayed snake in here', currentSnakes[0])
+                setDisplayedSnake(currentSnakes[0])
+                setSnakeCounter(0)
+            }
+    }
     })
 
     function flicker(ms) {
@@ -127,11 +136,11 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     }
 
     function advanceSnake(event) {
-        if(snakeCounter < snakesWithPics.length - 1) {
+        if(snakeCounter < currentSnakes.length - 1) {
             setSnakeCounter(prev => prev + 1)
             setPanicMode(false)
             setImageTitle('Look at this Snake: ')
-            setDisplayedSnake(snakesWithPics[snakeCounter + 1])
+            setDisplayedSnake(currentSnakes[snakeCounter + 1])
         } else {
             setFinished(true)
         }
@@ -154,11 +163,11 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
                         <div className="snake-and-counter">
                             <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
                             {panicMode ?
-                                <img src={puppy.src} alt="cute puppy" />
+                                <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
                                 :
-                                displayedSnake.image &&
+                                displayedSnake &&
                                 <>
-                                    <img className={`${snakeHidden}`} src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
+                                    <img className={`${snakeHidden}`} src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
                                     <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
                                 </>
                             }

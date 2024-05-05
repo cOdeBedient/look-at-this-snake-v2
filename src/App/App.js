@@ -38,6 +38,8 @@ useEffect(() => {
   .catch(err => handleError(err))
 }, [])
 
+console.log({snakes})
+
   return (
     <>
       <Routes>
