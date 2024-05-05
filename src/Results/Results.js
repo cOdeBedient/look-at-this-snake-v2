@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import Header from '../Header/Header'
 
 export default function Results({userData, currentLevel, resetData}) {
+    console.log('currentLevel', currentLevel)
+
     const stressTotals = userData[currentLevel].reduce((acc, snake) => {
         acc.beforeAvg += snake.beforeTotal/10
         acc.afterAvg += snake.afterTotal/10

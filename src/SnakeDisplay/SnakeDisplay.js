@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 // const STORED_SNAKES_W_PICS = []
 // sessionStorage.setItem(STORED_SNAKES_W_PICS, []);
 
-export default function SnakeDisplay({ snakes, currentLevel }) {
+export default function SnakeDisplay({ snakes, currentLevel, userData, updateUserData, resetUserData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     // const [ displayedSnake, setDisplayedSnake ] = useState(sessionStorage.getItem(STORED_SNAKE))
     const [ panicMode, setPanicMode ] = useState(false)
@@ -22,21 +22,14 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
     const [ currentSnakes, setCurrentSnakes] = useState([])
-    const [ userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
 
     useEffect(() => {
-        // let retrievedLevel = currentLevel
-        // if (!sessionStorage.getItem("STORED_LEVEL")) {
-        //     sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel));
-        // } else if (!currentLevel) {
-        //     retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
-        // }
+        resetData()
         filterSnakes()
     }, [snakes])
 
 
     function filterSnakes() {
-        console.log('current Level 39', currentLevel)
         let retrievedLevel = currentLevel
         if (!sessionStorage.getItem("STORED_LEVEL")) {
             sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel));
@@ -70,44 +63,24 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
         }
       }
       
-      function updateUserData(snake, data) {
-        const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
-        const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
-      
-        setUserData(updatedUser)
-      }
-      
       function resetData() {
-        setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
+        resetUserData()
         setCurrentSnakes([])
       }
 
     useEffect(() => {
-    //     console.log('coming in here')
-    //     const updatedPicSnakes = currentSnakes.map((snake) => {
-    //         const snakePic = new Image()
-    //         snakePic.src = snake.image
-    //         snake.image = snakePic
-
-    //         return snake
-    //    })
-       
        const puppyPic = new Image()
        puppyPic.src = '/assets/cute-doodle.jpg'
 
        setPuppy(puppyPic)
-    //    setSnakesWithPics(updatedPicSnakes)
     }, [currentSnakes])
-
-    // useEffect(() => {
-    //     sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
-    // }, [displayedSnake]);
 
     useEffect(() => {
         if(currentSnakes) {
             if(currentSnakes.length > 0 && snakeCounter === -1) {
-                setDisplayedSnake(currentSnakes[0])
-                setSnakeCounter(0)
+                //switch these back to zero
+                setDisplayedSnake(currentSnakes[7])
+                setSnakeCounter(7)
             }
         }
     })
@@ -141,13 +114,14 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
         setImageTitle('Look at this Snake: ')
     }
 
-
-    console.log('displayedSnake tracker', displayedSnake)
+    if(userData) {
+        console.log('userData', userData)
+    }
 
     return (
         <StyledSnakeDisplay>
             {finished ?
-                <Results userData={userData} currentLevel={currentLevel} resetData={resetData}  />
+                <Results resetData={resetData}  />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
@@ -180,7 +154,7 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
 }
 
 SnakeDisplay.propTypes = {
-    currentSnakes: PropTypes.arrayOf(PropTypes.shape({
+    snakes: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         isVenemous: PropTypes.bool.isRequired,
         isAggressive: PropTypes.bool.isRequired,

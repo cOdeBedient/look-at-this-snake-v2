@@ -12,6 +12,7 @@ const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
 const navigate = useNavigate()
 const [currentLevel, setCurrentLevel] = useState('')
+const [ userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': []})
 
 function handleError(error) {
   navigate('/error')
@@ -19,6 +20,17 @@ function handleError(error) {
 
 function getLevel(level) {
   setCurrentLevel(`Level${level}`)
+}
+
+function updateUserData(snake, data) { 
+  const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
+  const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
+
+  setUserData(updatedUser)
+}
+
+function resetUserData() {
+  setUserData({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': []})
 }
 
 useEffect(() => {
@@ -44,8 +56,8 @@ console.log({snakes})
     <>
       <Routes>
         <Route path='/' element={<LandingPage getLevel={getLevel}/>} />
-        <Route path='/game' element={<Game snakes={snakes} currentLevel={currentLevel} />} />
-        <Route path='/results' element={<Results />} />
+        <Route path='/game' element={<Game snakes={snakes} currentLevel={currentLevel} userData={userData} updateUserData={updateUserData} resetUserData={resetUserData}/>} />
+        <Route path='/results' element={<Results userData={userData} currentLevel={currentLevel} />} />
         <Route path='*' element={<Error />} />
         <Route path='/error' element={<Error />} />
       </Routes>

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData, snakeCounter }) {
+export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData, snakeCounter, userData }) {
     const [ evalFormData, setEvalFormData] = useState({before: '0', after: '0'})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
@@ -25,6 +25,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     function handleNextSnakeClick(event) {
         event.preventDefault()
         moveToNextSnake()
+        console.log('displayedSnake', displayedSnake)
         updateUserData(displayedSnake, evalFormData)
         
     }
@@ -67,7 +68,7 @@ EvaluationForm.propTypes = {
         name: PropTypes.string,
         isVenmous: PropTypes.bool,
         isAggressive: PropTypes.bool,
-        image: PropTypes.object,
+        image: PropTypes.string,
         isFavorite: PropTypes.bool
     }).isRequired,
     snakeHidden: PropTypes.string.isRequired,
