@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 // const STORED_SNAKES_W_PICS = []
 // sessionStorage.setItem(STORED_SNAKES_W_PICS, []);
 
-export default function SnakeDisplay({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
+export default function SnakeDisplay({ snakes, currentLevel, userData, updateUserData, resetUserData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
     // const [ displayedSnake, setDisplayedSnake ] = useState(sessionStorage.getItem(STORED_SNAKE))
     const [ panicMode, setPanicMode ] = useState(false)
@@ -21,51 +21,67 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
+    const [ currentSnakes, setCurrentSnakes] = useState([])
 
     useEffect(() => {
-        console.log(sessionStorage.getItem("STORED_SNAKES"))
-        if (!sessionStorage.getItem("STORED_SNAKES")) {
-            sessionStorage.setItem("STORED_SNAKES", JSON.stringify(currentSnakes));
-        } else {
-            console.log('here')
-            currentSnakes = JSON.parse(sessionStorage.getItem("STORED_SNAKES"))
-            console.log('currentSnakes here', currentSnakes)
+        resetData()
+        filterSnakes()
+    }, [snakes])
+
+
+    function filterSnakes() {
+        let retrievedLevel = currentLevel
+        if (!sessionStorage.getItem("STORED_LEVEL")) {
+            sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel));
+        } else if (!currentLevel) {
+            retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
         }
-    }, []);
 
-    console.log("currentSnakes", currentSnakes)
-
+        if(snakes.length > 0) {
+            let snakeSet;
+            if (retrievedLevel === 'Level1') {
+                snakeSet = snakes.filter((snake) => {
+                    return !snake.isVenemous && !snake.isAggressive
+                })
+            } else if (retrievedLevel === 'Level2') {
+                snakeSet = snakes.filter((snake) => {
+                    return !snake.isVenemous && snake.isAggressive
+                })
+            } else if (retrievedLevel === 'Level3') {
+                snakeSet = snakes.filter((snake) => {
+                    return snake.isVenemous && !snake.isAggressive
+                })
+            } else if (retrievedLevel === 'Level4') {
+                snakeSet = snakes.filter((snake) => {
+                    return snake.isVenemous && snake.isAggressive
+                })
+            }
+        
+            snakeSet[0].isDisplayed = true
+            setCurrentSnakes(snakeSet)
+            setDisplayedSnake(snakeSet[0])
+        }
+      }
+      
+      function resetData() {
+        resetUserData()
+        setCurrentSnakes([])
+      }
 
     useEffect(() => {
-        const updatedPicSnakes = currentSnakes.map((snake) => {
-            const snakePic = new Image()
-            snakePic.src = snake.image
-            snake.image = snakePic
-
-            return snake
-       })
-       
        const puppyPic = new Image()
        puppyPic.src = '/assets/cute-doodle.jpg'
 
        setPuppy(puppyPic)
-       setSnakesWithPics(updatedPicSnakes)
     }, [currentSnakes])
 
-    // useEffect(() => {
-    //     sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
-    // }, [displayedSnake]);
-
-    // console.log(sessionStorage.getItem("STORED_SNAKE"))
-
-
-    
-
-
     useEffect(() => {
-        if(snakesWithPics.length > 0 && snakeCounter === -1) {
-            setDisplayedSnake(snakesWithPics[0])
-            setSnakeCounter(0)
+        if(currentSnakes) {
+            if(currentSnakes.length > 0 && snakeCounter === -1) {
+                //switch these back to zero
+                setDisplayedSnake(currentSnakes[7])
+                setSnakeCounter(7)
+            }
         }
     })
 
@@ -82,11 +98,11 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
     }
 
     function advanceSnake(event) {
-        if(snakeCounter < snakesWithPics.length - 1) {
+        if(snakeCounter < currentSnakes.length - 1) {
             setSnakeCounter(prev => prev + 1)
             setPanicMode(false)
             setImageTitle('Look at this Snake: ')
-            setDisplayedSnake(snakesWithPics[snakeCounter + 1])
+            setDisplayedSnake(currentSnakes[snakeCounter + 1])
         } else {
             setFinished(true)
         }
@@ -98,10 +114,14 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
         setImageTitle('Look at this Snake: ')
     }
 
+    if(userData) {
+        console.log('userData', userData)
+    }
+
     return (
         <StyledSnakeDisplay>
             {finished ?
-                <Results userData={userData} currentLevel={currentLevel} resetData={resetData} />
+                <Results resetData={resetData}  />
                 :
                 <section className="snake-display">
                     <p className="snake-title">{imageTitle}</p>
@@ -109,11 +129,11 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
                         <div className="snake-and-counter">
                             <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
                             {panicMode ?
-                                <img src={puppy.src} alt="cute puppy" />
+                                <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
                                 :
                                 displayedSnake.image &&
                                 <>
-                                    <img className={`${snakeHidden}`} src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
+                                    <img className={`${snakeHidden}`} src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
                                     <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
                                 </>
                             }
@@ -134,7 +154,7 @@ export default function SnakeDisplay({ currentSnakes, updateUserData, userData, 
 }
 
 SnakeDisplay.propTypes = {
-    currentSnakes: PropTypes.arrayOf(PropTypes.shape({
+    snakes: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         isVenemous: PropTypes.bool.isRequired,
         isAggressive: PropTypes.bool.isRequired,

@@ -2,7 +2,7 @@ import { StyledGame } from './Game.styled'
 import SnakeDisplay from '../SnakeDisplay/SnakeDisplay'
 import Header from '../Header/Header'
 
-export default function Game({ currentSnakes, updateUserData, userData, currentLevel, resetData }) {
+export default function Game({ snakes, currentLevel, userData, updateUserData, resetUserData }) {
 
     return (
         <>  
@@ -10,12 +10,7 @@ export default function Game({ currentSnakes, updateUserData, userData, currentL
             <Header />
                 <main>
                     <div>
-                        <SnakeDisplay
-                            currentSnakes={currentSnakes}
-                            updateUserData={updateUserData}
-                            userData={userData}
-                            currentLevel={currentLevel}
-                            resetData={resetData} />
+                        <SnakeDisplay snakes={snakes} currentLevel={currentLevel} userData={userData} updateUserData={updateUserData} resetUserData={resetUserData} />
                     </div>
                 </main>
             </StyledGame>
