@@ -11,7 +11,7 @@ function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
 const navigate = useNavigate()
-const [currentLevel, setCurrentLevel] = useState('')
+const [currentLevel, setCurrentLevel] = useState('Level1')
 
 function handleError(error) {
   navigate('/error')

@@ -17,21 +17,33 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
     const [ snakeCounter, setSnakeCounter ] = useState(-1)
     const [ finished, setFinished ] = useState(false)
-    // const [ snakesWithPics, setSnakesWithPics ] = useState([])
-    // const [ puppy, setPuppy ] = useState('')
+    const [ snakesWithPics, setSnakesWithPics ] = useState([])
+    const [ puppy, setPuppy ] = useState('')
     const [ boxHidden, setBoxHidden] = useState('')
     const [ snakeHidden, setSnakeHidden] = useState('hidden')
     const [ currentSnakes, setCurrentSnakes] = useState([])
     const [ userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': [],})
 
 
+
+           
+
     useEffect(() => {
-        console.log('currentLevel', currentLevel)
-        resetData()
-        filterSnakes(currentLevel)
+        let retrievedLevel = currentLevel
+        if (!sessionStorage.getItem("STORED_LEVEL")) {
+            sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel));
+        } else {
+            console.log('here')
+            retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
+            console.log('currentSnakes here', currentSnakes)
+        }
+        filterSnakes(retrievedLevel)
     }, [snakes])
 
+
     function filterSnakes(level) {
+        console.log('snakes 48', snakes)
+        console.log('currentLevel', currentLevel)
         if(snakes.length > 0) {
             let snakeSet;
             if (level === 'Level1') {
@@ -54,6 +66,7 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
         
             snakeSet[0].isDisplayed = true
             setCurrentSnakes(snakeSet)
+            setDisplayedSnake(snakeSet[0])
         }
       }
       
@@ -70,39 +83,30 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
       }
 
 
-    // useEffect(() => {
-    //     console.log("session stored snakes", sessionStorage.getItem("STORED_SNAKES"))
-    //     if (currentSnakes.length > 0 && !sessionStorage.getItem("STORED_SNAKES")) {
-    //         sessionStorage.setItem("STORED_SNAKES", JSON.stringify(currentSnakes));
-    //     } else {
-    //         console.log('here')
-    //         setCurrentSnakes(JSON.parse(sessionStorage.getItem("STORED_SNAKES")))
-    //         console.log('currentSnakes here', currentSnakes)
-    //     }
-    // }, []);
+  
 
     // console.log("currentSnakes", currentSnakes)
 
 
-    // useEffect(() => {
-    //     const updatedPicSnakes = currentSnakes.map((snake) => {
-    //         const snakePic = new Image()
-    //         snakePic.src = snake.image
-    //         snake.image = snakePic
+    useEffect(() => {
+        const updatedPicSnakes = currentSnakes.map((snake) => {
+            const snakePic = new Image()
+            snakePic.src = snake.image
+            snake.image = snakePic
 
-    //         return snake
-    //    })
+            return snake
+       })
        
-    //    const puppyPic = new Image()
-    //    puppyPic.src = '/assets/cute-doodle.jpg'
+       const puppyPic = new Image()
+       puppyPic.src = '/assets/cute-doodle.jpg'
 
-    //    setPuppy(puppyPic)
-    //    setSnakesWithPics(updatedPicSnakes)
-    // }, [currentSnakes])
+       setPuppy(puppyPic)
+       setSnakesWithPics(updatedPicSnakes)
+    }, [currentSnakes])
 
-    // useEffect(() => {
-    //     sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
-    // }, [displayedSnake]);
+    useEffect(() => {
+        sessionStorage.setItem("STORED_SNAKE", JSON.stringify(displayedSnake));
+    }, [displayedSnake]);
 
     // console.log(sessionStorage.getItem("STORED_SNAKE"))
 
@@ -113,14 +117,14 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     useEffect(() => {
         console.log('made it once')
         if(currentSnakes) {
-            if(currentSnakes.length > 0 && snakeCounter === -1) {
+            if(snakesWithPics.length > 0 && snakeCounter === -1) {
                 console.log('made it twice')
                 console.log('current Snake inside', currentSnakes)
                 console.log('displayed snake in here', currentSnakes[0])
-                setDisplayedSnake(currentSnakes[0])
+                setDisplayedSnake(snakesWithPics[0])
                 setSnakeCounter(0)
             }
-    }
+        }
     })
 
     function flicker(ms) {
@@ -136,11 +140,11 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
     }
 
     function advanceSnake(event) {
-        if(snakeCounter < currentSnakes.length - 1) {
+        if(snakeCounter < snakesWithPics.length - 1) {
             setSnakeCounter(prev => prev + 1)
             setPanicMode(false)
             setImageTitle('Look at this Snake: ')
-            setDisplayedSnake(currentSnakes[snakeCounter + 1])
+            setDisplayedSnake(snakesWithPics[snakeCounter + 1])
         } else {
             setFinished(true)
         }
@@ -151,6 +155,9 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
         setBoxHidden('hidden')
         setImageTitle('Look at this Snake: ')
     }
+
+
+console.log('displayedSnake tracker', displayedSnake)
 
     return (
         <StyledSnakeDisplay>
@@ -165,9 +172,9 @@ export default function SnakeDisplay({ snakes, currentLevel }) {
                             {panicMode ?
                                 <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
                                 :
-                                displayedSnake &&
+                                displayedSnake.image &&
                                 <>
-                                    <img className={`${snakeHidden}`} src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                                    <img className={`${snakeHidden}`} src={displayedSnake.image.src} alt={`image of ${displayedSnake.name}`} />
                                     <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
                                 </>
                             }
