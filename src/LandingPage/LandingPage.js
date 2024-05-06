@@ -6,8 +6,8 @@ export default function LandingPage({getLevel}) {
 
     return (
         <>
+            <Header />
             <StyledLandingPage>
-                <Header />
                 <div className="landing-container">
                     <section>
                         <h2>Look at This Snake Then Look at This Puppy</h2>

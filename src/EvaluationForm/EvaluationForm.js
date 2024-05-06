@@ -19,7 +19,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     function handleRunTestClick(event) {
         event.preventDefault()
         runTest()
-        setTimeout(() => {setTestHasRun(true)}, 3300)
+        setTimeout(() => {setTestHasRun(true)}, 4000)
     }
 
     function handleNextSnakeClick(event) {

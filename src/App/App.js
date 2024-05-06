@@ -7,11 +7,16 @@ import Results from '../Results/Results'
 import { Route, Routes } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
+let levelStart = ''
+if(sessionStorage.getItem("STORED_LEVEL")) {
+  levelStart = JSON.parse(sessionStorage.getItem("STORED_LEVEL"))
+}
+
 function App() {
 const [zones, setZones] = useState([])
 const [snakes, setSnakes] = useState([])
 const navigate = useNavigate()
-const [currentLevel, setCurrentLevel] = useState('')
+const [currentLevel, setCurrentLevel] = useState(levelStart)
 const [ userData, setUserData] = useState({'Level1': [], 'Level2': [], 'Level3': [], 'Level4': []})
 
 function handleError(error) {
@@ -22,7 +27,7 @@ function getLevel(level) {
   setCurrentLevel(`Level${level}`)
 }
 
-function updateUserData(snake, data) { 
+function updateUserData(snake, data) {
   const newSnakeData = {snake: snake.name, stressBefore: data.before, stressAfter: data.after}
   const updatedUser = {...userData, [currentLevel]: [...userData[currentLevel], newSnakeData]}
 

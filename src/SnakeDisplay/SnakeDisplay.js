@@ -24,16 +24,21 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     const [ currentSnakes, setCurrentSnakes] = useState([])
 
     useEffect(() => {
+        console.log('in this here to reset')
         resetData()
         filterSnakes()
     }, [snakes])
 
 
     function filterSnakes() {
+        console.log('currentLevel is', currentLevel)
         let retrievedLevel = currentLevel
         if (!sessionStorage.getItem("STORED_LEVEL")) {
-            sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel));
+            console.log('are we storing??')
+            sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel))
         } else if (!currentLevel) {
+            console.log('so must be here')
+            console.log('then what is this? No json', (sessionStorage.getItem("STORED_LEVEL")))
             retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
         }
 
@@ -48,6 +53,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
                     return !snake.isVenemous && snake.isAggressive
                 })
             } else if (retrievedLevel === 'Level3') {
+                console.log('inside this piece')
                 snakeSet = snakes.filter((snake) => {
                     return snake.isVenemous && !snake.isAggressive
                 })
@@ -56,7 +62,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
                     return snake.isVenemous && snake.isAggressive
                 })
             }
-        
+            console.log('and snakeset is', snakeSet)
             snakeSet[0].isDisplayed = true
             setCurrentSnakes(snakeSet)
             setDisplayedSnake(snakeSet[0])
@@ -86,13 +92,26 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     })
 
     function flicker(ms) {
-        setTimeout(() => {setPanicMode(prev => !prev)}, ms)
+        setTimeout(() => {   
+            setPanicMode(prev => !prev)
+            // toggleTitle()
+        }, ms)
     }
 
+    // function toggleTitle() {
+    //     if(imageTitle === 'Look at this Snake: ') {
+    //         console.log('here')
+    //         setImageTitle('Look at this Dog: ')
+    //     } else {
+    //         console.log('there')
+    //         setImageTitle('Look at this Snake: ')
+    //     }
+    // }
+
     function runTest() {
-        setImageTitle('processing...')
-        setTimeout(() => {setImageTitle('Look at this Dog: ')}, 3200)
-        for(var i=100; i<3150; i+=100) {
+        setImageTitle("Ok I'm here to help!")
+        setTimeout(() => {setImageTitle('Look at this Dog: ')}, 4000)
+        for(var i=0; i<=4000; i+=1000) {
             flicker(i)
         }
     }
@@ -114,9 +133,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         setImageTitle('Look at this Snake: ')
     }
 
-    if(userData) {
-        console.log('userData', userData)
-    }
+    console.log('imageTitle', imageTitle)
 
     return (
         <StyledSnakeDisplay>
