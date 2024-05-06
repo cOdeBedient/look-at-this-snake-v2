@@ -5,21 +5,23 @@ export const StyledLandingPage = styled.div`
   /* background-image: url(/assets/puppy-wide-blue-background.jpg); */
   /* background-size: cover; */
   position: absolute;
-  width: 100vw;
+  width: 100%;
   background-image: url(/assets/snake-skin-background.jpg);
   /* background-size: 10%; */
   font-family: "Anybody", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   text-align: center;
+  display: flex;
+  justify-content: center;
 
   ::before {
     content: "";
     position: absolute;
     top: 20px;
     left: 0;
-    width: 100vw;
-    height:100vh;
+    width: 100%;
+    height: 100vh;
     z-index: -1;
     /* background-image: linear-gradient(to left, #434343 0%, white 100%); */
     /* background-color: red; */
@@ -27,13 +29,13 @@ export const StyledLandingPage = styled.div`
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    
   }
 
   .landing-container {
     display: flex;
     align-items: center;
-    margin-top: 150px;
+    height: fit-content;
+    margin-top: 10vh;
   }
 
   section {
@@ -41,7 +43,7 @@ export const StyledLandingPage = styled.div`
     /* border: 5px solid yellow; */
     padding: 10px 10px 10px 10px;
     width: 500px;
-    margin-left: 80px;
+    /* margin-left: 80px; */
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -122,7 +124,7 @@ export const StyledLandingPage = styled.div`
 
   @media screen and (max-width: 1024px) {
     section {
-      margin-top: 100px;
+      /* margin-top: 100px; */
       margin-left: 50px;
     }
 

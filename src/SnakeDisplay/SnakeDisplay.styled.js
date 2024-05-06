@@ -19,7 +19,7 @@ export const StyledSnakeDisplay = styled.div`
         width: 600px;
         padding: 10px;
         border: 2px solid black;
-        background-color: rgb(180, 180, 180, 1);
+        background-color: red;
         background-image: url(/assets/snake-dog.png);
         background-size: 50%;
         background-repeat: no-repeat;
