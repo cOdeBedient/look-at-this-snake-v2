@@ -10,11 +10,12 @@ export const StyledEvaluationForm = styled.form`
 
     .eval-form {
         margin-top: 30px;
-        background-color: white;
+        background-color: red;
         border-radius: 10px;
         padding: 10px;
         width: 100%;
         border: 8px solid red;
+        color: white;
     }
 
     label {
@@ -26,8 +27,8 @@ export const StyledEvaluationForm = styled.form`
         width: 130px;
         text-align: center;
         border: none;
-        background-color: red;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     button {
