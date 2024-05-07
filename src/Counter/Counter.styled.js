@@ -8,7 +8,13 @@ export const StyledCounter = styled.div`
         width: 15px;
 
     p {
-        margin: 11px 0;
+        margin: 7.5px 0;
+        border-radius: 3px;
+        background-color: red;
+        padding: 3px;
+        color: white;
+        /* border: 3px solid red; */
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     @media screen and (max-width: 1024px) {

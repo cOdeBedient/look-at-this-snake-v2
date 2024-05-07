@@ -31,6 +31,7 @@ export const StyledLevelForm = styled.section`
         font-weight: bolder;
         font-style: italic;
         font-size: 15px;
+        background-color: white;
     }
 
     :hover {

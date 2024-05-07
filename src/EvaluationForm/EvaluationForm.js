@@ -40,10 +40,10 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
         snakeHidden === '' &&
         <StyledEvaluationForm>
                 <div className="eval-form">
-                    <label>Initial Anxiety Level (out of 10)
+                    <label>Initial Anxiety (out of 10)
                         <input type="number" name="before" min="0" max="10" value={evalFormData.before} onChange={event => handleChange(event)} disabled={testHasRun} />
                     </label>
-                    <button onClick={event => handleRunTestClick(event)} disabled={testHasRun}>initiate processing</button>
+                    <button onClick={event => handleRunTestClick(event)} disabled={testHasRun}>Let's Do This!</button>
                 </div>
                 {testHasRun &&
                 <div className="eval-form">
@@ -51,7 +51,7 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
                         <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
                     </label>
                     { snakeCounter < 9 ?
-                        <button onClick={event => handleNextSnakeClick(event)}>I'm ready to see the next snake</button>
+                        <button onClick={event => handleNextSnakeClick(event)}>Next Snake!</button>
                         :
                         <Link to='/results'>
                             <button>see results</button>

@@ -7,6 +7,7 @@ export const StyledGame = styled.div`
 
     .game-title {
         color: black;
+        background-color: white;
     }
 
     main {
@@ -15,8 +16,9 @@ export const StyledGame = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        /* background-image: url(/assets/snake-skin-background.jpg); */
         background-image: url(/assets/snake-skin-background.jpg);
-        background-size: repeat;
+        /* background-size: 20%; */
         /* background-image: url(/assets/snake-dog.png);
         background-size: 2%; */
     }
