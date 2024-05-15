@@ -2,7 +2,7 @@
 **Overview:**
 A phobic deprogramming tool designed by someone with no credentials, "Look at This Snake" is a silly and fun way to look at snakes and feel less scared!
 
-[Check out the beta version here!](https://look-at-this-snake-v2.vercel.app/))
+[Check out the beta version here!](https://look-at-this-snake-v2.vercel.app/)
 
 ###  Installation
 - `clone repo to your local machine
