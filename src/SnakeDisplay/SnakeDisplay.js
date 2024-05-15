@@ -5,14 +5,8 @@ import Counter from '../Counter/Counter'
 import EvaluationForm from '../EvaluationForm/EvaluationForm'
 import PropTypes from 'prop-types'
 
-// const STORED_SNAKE = JSON.stringify({})
-// sessionStorage.setItem(STORED_SNAKE, JSON.stringify({}));
-// const STORED_SNAKES_W_PICS = []
-// sessionStorage.setItem(STORED_SNAKES_W_PICS, []);
-
 export default function SnakeDisplay({ snakes, currentLevel, userData, updateUserData, resetUserData }) {
     const [ displayedSnake, setDisplayedSnake ] = useState({})
-    // const [ displayedSnake, setDisplayedSnake ] = useState(sessionStorage.getItem(STORED_SNAKE))
     const [ panicMode, setPanicMode ] = useState(false)
     const [ imageTitle, setImageTitle ] = useState('Take 5 deep breaths, and then click the box to begin.')
     const [ snakeCounter, setSnakeCounter ] = useState(-1)
@@ -57,7 +51,6 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
                     return snake.isVenemous && snake.isAggressive
                 })
             }
-            console.log('and snakeset is', snakeSet)
             snakeSet[0].isDisplayed = true
             setCurrentSnakes(snakeSet)
             setDisplayedSnake(snakeSet[0])
@@ -65,7 +58,6 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
       }
       
       function resetData() {
-        // resetUserData()
         setCurrentSnakes([])
       }
 
@@ -79,9 +71,8 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     useEffect(() => {
         if(currentSnakes) {
             if(currentSnakes.length > 0 && snakeCounter === -1) {
-                //switch these back to zero
-                setDisplayedSnake(currentSnakes[8])
-                setSnakeCounter(8)
+                setDisplayedSnake(currentSnakes[1])
+                setSnakeCounter(1)
             }
         }
     })
@@ -89,19 +80,8 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     function flicker(ms) {
         setTimeout(() => {   
             setPanicMode(prev => !prev)
-            // toggleTitle()
         }, ms)
     }
-
-    // function toggleTitle() {
-    //     if(imageTitle === 'Look at this Snake: ') {
-    //         console.log('here')
-    //         setImageTitle('Look at this Dog: ')
-    //     } else {
-    //         console.log('there')
-    //         setImageTitle('Look at this Snake: ')
-    //     }
-    // }
 
     function runTest() {
         setImageTitle("You're ok! I'm here to help!")
@@ -128,16 +108,12 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         setImageTitle('Look👀 at this Snake: ')
     }
 
-    console.log('boxHidden', boxHidden)
-    console.log('ds image', displayedSnake.image)
-
     return (
         <StyledSnakeDisplay>
             {finished ?
                 <Results resetData={resetData}  />
                 :
                 <>
-                    {/* <img className='dog-head' src='/assets/doodle-head.png' alt="cute puppy" /> */}
                     <section className="snake-display">
                         <p className="snake-title">{imageTitle}</p>
                         <div className="snake-photos-container">

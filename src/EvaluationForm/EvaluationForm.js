@@ -25,7 +25,6 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     function handleNextSnakeClick(event) {
         event.preventDefault()
         moveToNextSnake()
-        console.log('displayedSnake', displayedSnake)
         updateUserData(displayedSnake, evalFormData)
         
     }

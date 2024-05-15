@@ -4,7 +4,6 @@ export default function Counter({ currentSnakes, snakeCounter }) {
     let snakesLeft
     let snakeBoxes
     
-    // if(currentSnakes && snakeCounter) {
         snakesLeft = currentSnakes.length - snakeCounter - 1
         snakeBoxes = currentSnakes.reduce((acc, snake, index) => {
             if (index <= snakesLeft) {
@@ -22,7 +21,7 @@ export default function Counter({ currentSnakes, snakeCounter }) {
 
             return acc;
         }, [])
-    // }
+
 
     return (
         <StyledCounter>
