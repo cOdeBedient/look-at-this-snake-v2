@@ -80,8 +80,8 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         if(currentSnakes) {
             if(currentSnakes.length > 0 && snakeCounter === -1) {
                 //switch these back to zero
-                setDisplayedSnake(currentSnakes[0])
-                setSnakeCounter(0)
+                setDisplayedSnake(currentSnakes[8])
+                setSnakeCounter(8)
             }
         }
     })
