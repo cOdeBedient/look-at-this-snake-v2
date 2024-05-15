@@ -9,8 +9,11 @@ export const StyledSnakeDisplay = styled.div`
         /* margin-top: 70px; */
         background-color: red;
         color: white;
-        padding: 7px 10px;
+        height: 1.6em;
+        padding-left: 9px;
+        padding-right: 8px;
         border-radius: 10px;
+        padding-top: 3px;
         /* border: 6px solid red; */
         margin-bottom: 10px;
         font-size: 1.3em;

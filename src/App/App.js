@@ -41,6 +41,7 @@ function resetUserData() {
 useEffect(() => {
   getData()
   .then(([zones, snakes]) => {
+    console.log('snakes in heya', snakes)
     const preppedSnakes = snakes.snakes.map((snake) => {
       return {
         ...snake,

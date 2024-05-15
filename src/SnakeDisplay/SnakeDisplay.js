@@ -24,21 +24,16 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     const [ currentSnakes, setCurrentSnakes] = useState([])
 
     useEffect(() => {
-        console.log('in this here to reset')
         resetData()
         filterSnakes()
     }, [snakes])
 
 
     function filterSnakes() {
-        console.log('currentLevel is', currentLevel)
         let retrievedLevel = currentLevel
         if (!sessionStorage.getItem("STORED_LEVEL")) {
-            console.log('are we storing??')
             sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel))
         } else if (!currentLevel) {
-            console.log('so must be here')
-            console.log('then what is this? No json', (sessionStorage.getItem("STORED_LEVEL")))
             retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
         }
 
@@ -133,7 +128,8 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         setImageTitle('Look👀 at this Snake: ')
     }
 
-    console.log('imageTitle', imageTitle)
+    console.log('boxHidden', boxHidden)
+    console.log('ds image', displayedSnake.image)
 
     return (
         <StyledSnakeDisplay>
