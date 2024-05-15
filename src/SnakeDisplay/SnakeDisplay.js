@@ -24,21 +24,16 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     const [ currentSnakes, setCurrentSnakes] = useState([])
 
     useEffect(() => {
-        console.log('in this here to reset')
         resetData()
         filterSnakes()
     }, [snakes])
 
 
     function filterSnakes() {
-        console.log('currentLevel is', currentLevel)
         let retrievedLevel = currentLevel
         if (!sessionStorage.getItem("STORED_LEVEL")) {
-            console.log('are we storing??')
             sessionStorage.setItem("STORED_LEVEL", JSON.stringify(currentLevel))
         } else if (!currentLevel) {
-            console.log('so must be here')
-            console.log('then what is this? No json', (sessionStorage.getItem("STORED_LEVEL")))
             retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
         }
 
@@ -109,9 +104,9 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     // }
 
     function runTest() {
-        setImageTitle("Ok I'm here to help!")
+        setImageTitle("You're ok! I'm here to help!")
         setTimeout(() => {setImageTitle('Look at this Dog: ')}, 4000)
-        for(var i=0; i<=4000; i+=1000) {
+        for(var i=0; i<=4000; i+=500) {
             flicker(i)
         }
     }
@@ -120,7 +115,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
         if(snakeCounter < currentSnakes.length - 1) {
             setSnakeCounter(prev => prev + 1)
             setPanicMode(false)
-            setImageTitle('Look at this Snake: ')
+            setImageTitle('Look👀 at this Snake: ')
             setDisplayedSnake(currentSnakes[snakeCounter + 1])
         } else {
             setFinished(true)
@@ -130,41 +125,45 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     function clickBox() {
         setSnakeHidden('')
         setBoxHidden('hidden')
-        setImageTitle('Look at this Snake: ')
+        setImageTitle('Look👀 at this Snake: ')
     }
 
-    console.log('imageTitle', imageTitle)
+    console.log('boxHidden', boxHidden)
+    console.log('ds image', displayedSnake.image)
 
     return (
         <StyledSnakeDisplay>
             {finished ?
                 <Results resetData={resetData}  />
                 :
-                <section className="snake-display">
-                    <p className="snake-title">{imageTitle}</p>
-                    <div className="snake-photos-container">
-                        <div className="snake-and-counter">
-                            <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
-                            {panicMode ?
-                                <img src='/assets/cute-doodle.jpg' alt="cute puppy" />
-                                :
-                                displayedSnake.image &&
-                                <>
-                                    <img className={`${snakeHidden}`} src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
-                                    <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
-                                </>
-                            }
-                        </div>
-                        <EvaluationForm
-                            snakeHidden={snakeHidden}
-                            advanceSnake={advanceSnake}
-                            runTest={runTest}
-                            displayedSnake={displayedSnake}
-                            updateUserData={updateUserData}
-                            snakeCounter={snakeCounter}
-                            />
-                    </div> 
-                </section>
+                <>
+                    {/* <img className='dog-head' src='/assets/doodle-head.png' alt="cute puppy" /> */}
+                    <section className="snake-display">
+                        <p className="snake-title">{imageTitle}</p>
+                        <div className="snake-photos-container">
+                            <div className="snake-and-counter">
+                                <Counter currentSnakes={currentSnakes} snakeCounter={snakeCounter} />
+                                {panicMode ?
+                                    <img className="box-pic" src='/assets/cute-doodle.jpg' alt="cute puppy" />
+                                    :
+                                    displayedSnake.image &&
+                                    <>
+                                        <img className={`${snakeHidden} box-pic`}  src={displayedSnake.image} alt={`image of ${displayedSnake.name}`} />
+                                        <div onClick={clickBox} className={`start-box ${boxHidden}`} tabIndex="1"></div>
+                                    </>
+                                }
+                            </div>
+                            <EvaluationForm
+                                snakeHidden={snakeHidden}
+                                advanceSnake={advanceSnake}
+                                runTest={runTest}
+                                displayedSnake={displayedSnake}
+                                updateUserData={updateUserData}
+                                snakeCounter={snakeCounter}
+                                />
+                        </div> 
+                    </section>
+                </>
             }
         </StyledSnakeDisplay>
     )

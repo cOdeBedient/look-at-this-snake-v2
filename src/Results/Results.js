@@ -43,7 +43,7 @@ console.log('retrievedLevel', retrievedLevel)
     let difference = stressTotals.beforeAvg - stressTotals.afterAvg
     if (difference < 3) {
         fortunateness = "Unfortunately"
-        benefit = "not very beneficial to you. Most likely you have misused the test."
+        benefit = "not very beneficial to you. But you can always try again!"
     } else if (difference < 6) {
         fortunateness = "Fortunately"
         benefit = "very beneficial to you."
@@ -62,20 +62,24 @@ console.log('retrievedLevel', retrievedLevel)
     }
 
     return (
-        <StyledResults>
+        <>
             <Header />
-            <div>
-                <h4>You completed {levelString.toLowerCase()}.</h4>
-                <h4>Your compiled pre-treatment fear totals indicate a {snakeFear} level of ophidiophobia.</h4>
-                <h4>{fortunateness}, this treatment was {benefit}</h4>
-                <h4>Would you like to continue with more processing?</h4>
-                <Link to='/'>
-                    <button className="back-button" onClick={resetStorage}>return to homepage</button>
-                </Link>
-                {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
-            </div>
-        </StyledResults>
-        
+            <StyledResults>
+                <div className="results-container">
+                    <img className="box-pic" src='/assets/doodle-no-background.png' alt="cute puppy" />
+                    <div className="results">
+                        <h4>Hooray! You completed {levelString.toLowerCase()}!</h4>
+                        <h4>Before we started, you had a {snakeFear} level of ophidiophobia (snake fear!).</h4>
+                        <h4>{fortunateness}, this treatment was {benefit}</h4>
+                        <h4>Would you like to continue with more processing?</h4>
+                        <Link to='/'>
+                            <button className="back-button" onClick={resetStorage}>return to homepage</button>
+                        </Link>
+                        {/* <h4>Or just give up and start researching snakeless regions to move to?</h4> */}
+                    </div>
+                </div>
+            </StyledResults>
+        </>
     )
 }
 

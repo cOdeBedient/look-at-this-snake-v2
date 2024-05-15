@@ -1,9 +1,9 @@
 function fetchZones() {
-    return fetch('https://look-at-this-snake-api.onrender.com/api/v1/noSnakeZones')
+    return fetch('https://no-snake-zones-api-a2b305ed7478.herokuapp.com/api/v1/noSnakeZones')
 }
 
 function fetchSnakes() {
-    return fetch('https://look-at-this-snake-api.onrender.com/api/v1/snakes')
+    return fetch('https://no-snake-zones-api-a2b305ed7478.herokuapp.com/api/v1/snakes')
 }
 
 function fetchData() {

@@ -1,31 +1,56 @@
 import styled from 'styled-components'
 
 export const StyledSnakeDisplay = styled.div`
-    h2 {
-        margin-top: 70px;
+ font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  
+
+    .snake-title {
+        /* margin-top: 70px; */
+        background-color: red;
+        color: white;
+        height: 1.6em;
+        padding-left: 9px;
+        padding-right: 8px;
+        border-radius: 10px;
+        padding-top: 3px;
+        /* border: 6px solid red; */
+        margin-bottom: 10px;
+        font-size: 1.3em;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
-    img {
+    .box-pic {
         height: 400px;
         width: 600px;
         object-fit: cover;
         padding: 10px;
-        border: 2px solid black;
-        background-color: light grey;
+        /* border: 2px solid black; */
+        background-color: red;
+        border-radius: 10px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .dog-head {
+        height: 200px;
+        width: 200px;
+        position: absolute;
     }
 
     .start-box {
         height: 400px;
         width: 600px;
         padding: 10px;
-        border: 2px solid black;
+        /* border: 2px solid black; */
         background-color: red;
         background-image: url(/assets/snake-dog.png);
         background-size: 50%;
         background-repeat: no-repeat;
         background-position: center;
+        border-radius: 10px;
         filter: invert(0%);
         cursor: pointer;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     .snake-display {
@@ -60,7 +85,7 @@ export const StyledSnakeDisplay = styled.div`
 
 
     @media screen and (max-width: 1024px) {
-        img {
+        .box-pic {
             height: 300px;
             width: 450px;
             padding: 10px;
@@ -89,7 +114,7 @@ export const StyledSnakeDisplay = styled.div`
             width: 100%;
         }
 
-        img {
+        .box-pic {
             width: 75vw;
             height: 45vw;
             padding: 10px;

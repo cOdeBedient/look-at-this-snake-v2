@@ -12,6 +12,7 @@ export const StyledHeader = styled.header`
     font-style: normal;
     font-variation-settings:
       "MORF" 0;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 
     h1 {
         margin: 7px 0px 7px 0px;
