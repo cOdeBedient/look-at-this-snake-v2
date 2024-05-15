@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import Header from '../Header/Header'
 
 export default function Results({userData, currentLevel, resetUserData}) {
-    console.log('userData', userData)
     let retrievedUserData
     let retrievedLevel
     
-    console.log("ss", sessionStorage.getItem("STORED_USER_DATA"))
 
     if (!sessionStorage.getItem("STORED_USER_DATA")) {
         sessionStorage.setItem("STORED_USER_DATA", JSON.stringify(userData))
@@ -19,8 +17,6 @@ export default function Results({userData, currentLevel, resetUserData}) {
         retrievedUserData = (JSON.parse(sessionStorage.getItem("STORED_USER_DATA")))
         retrievedLevel = (JSON.parse(sessionStorage.getItem("STORED_LEVEL")))
     }
-
-console.log('retrievedLevel', retrievedLevel)
 
     const stressTotals = retrievedUserData[retrievedLevel].reduce((acc, snake) => {
         acc.beforeAvg += snake.beforeTotal/10
