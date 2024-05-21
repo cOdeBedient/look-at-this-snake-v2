@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData, snakeCounter, userData }) {
+export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, displayedSnake, updateUserData, snakeCounter, userData, currentSnakes }) {
     const [ evalFormData, setEvalFormData] = useState({before: '0', after: '0'})
     const [ testHasRun, setTestHasRun ] = useState(false)
 
@@ -17,9 +17,10 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
     }
 
     function handleRunTestClick(event) {
+        console.log('run test button')
         event.preventDefault()
         runTest()
-        setTimeout(() => {setTestHasRun(true)}, 4000)
+        setTimeout(() => {setTestHasRun(true)}, 0)
     }
 
     function handleNextSnakeClick(event) {
@@ -45,15 +46,15 @@ export default function EvaluationForm({ advanceSnake, runTest, snakeHidden, dis
                     <button onClick={event => handleRunTestClick(event)} disabled={testHasRun}>Let's Do This!</button>
                 </div>
                 {testHasRun &&
-                <div className="eval-form">
+                <div className="eval-form updated-form">
                     <label>Updated Anxiety Level (out of 10)
                         <input type="number" name="after" min="0" max="10" value={evalFormData.after} onChange={event => handleChange(event)} />
                     </label>
-                    { snakeCounter < 9 ?
+                    { snakeCounter < currentSnakes.length - 1 ?
                         <button onClick={event => handleNextSnakeClick(event)}>Next Snake!</button>
                         :
                         <Link to='/results'>
-                            <button>see results</button>
+                            <button>See Results</button>
                         </Link>
                     }
                 </div> 
