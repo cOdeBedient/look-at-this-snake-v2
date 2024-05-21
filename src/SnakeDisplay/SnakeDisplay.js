@@ -71,13 +71,14 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
     useEffect(() => {
         if(currentSnakes) {
             if(currentSnakes.length > 0 && snakeCounter === -1) {
-                setDisplayedSnake(currentSnakes[1])
-                setSnakeCounter(1)
+                setDisplayedSnake(currentSnakes[0])
+                setSnakeCounter(0)
             }
         }
     })
 
     function flicker(ms) {
+        console.log('in flicker')
         setTimeout(() => {   
             setPanicMode(prev => !prev)
         }, ms)
@@ -136,6 +137,7 @@ export default function SnakeDisplay({ snakes, currentLevel, userData, updateUse
                                 displayedSnake={displayedSnake}
                                 updateUserData={updateUserData}
                                 snakeCounter={snakeCounter}
+                                currentSnakes={currentSnakes}
                                 />
                         </div> 
                     </section>

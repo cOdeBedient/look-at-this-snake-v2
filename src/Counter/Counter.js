@@ -15,7 +15,7 @@ export default function Counter({ currentSnakes, snakeCounter }) {
                 }
                 acc.push(
                 <div>
-                    <p>{text}</p>
+                    <p key={index}>{text}</p>
                 </div>)
             }
 
